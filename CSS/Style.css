@@ -1,0 +1,489 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,800&display=swap');
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 20px;
+}
+
+body{
+    background-color: black;
+}
+
+.header{
+    background-color: blueviolet;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 85px;
+    padding: 5px 10%;    
+}
+
+.header .logo{
+    cursor: pointer;
+}
+
+.header .logo img{
+    height: 70px;
+    width: auto;
+    transition: all 0.3s;
+}
+
+.header .logo img:hover{
+    transform: scale(1.2);
+}
+
+.header .nav-links li{
+    display: inline-block;
+    padding: 0 20px;
+}
+
+.header .nav-links li:hover{
+    transform: scale(1.1);
+}
+
+.header .nav-links a{
+    font-size: 700;
+    color: white;
+    text-decoration: none;
+}
+
+.header .nav-links a:hover{
+    color: orange;
+}
+
+.header .btn button{
+    font-weight: 700;
+    color: white;
+    padding: 9px 25px;
+    background-color: orange;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+.header .btn button:hover{
+    background-color: white;
+    color: orange;
+    transform: scale(1.1);
+}
+
+.heading-1{
+    text-align: center;
+    font-weight: 700;
+    font-size: 3rem;
+    color: blueviolet;
+}
+
+.banner{
+    background-image:linear-gradient(100deg,#000000,#00000000), url(/img/impresoras3D.jpg);
+    height: 60rem;
+    background-size: cover;
+    background-position: center;
+}
+.content-banner{
+    max-width: 90rem;
+    margin: 0 auto;
+    padding: 15rem 0;
+}
+
+.content-banner p{
+    color: orange;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.content-banner h2{
+    color: white;
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.content-banner a{
+    margin-top: 2rem;
+    text-decoration: none;
+    color: orange;
+    font-weight: 700;
+    background-color: white;
+    display: inline-block;
+    padding: 1rem 3rem;
+    text-transform: uppercase;
+    border-radius: 3rem;
+    transition: all 0.3s ease 0s;
+}
+
+.content-banner a:hover{
+    background-color: orange;
+    color: white;
+    transform: scale(1.1);
+}
+
+/* Main CONTENT */
+
+.main-content{
+    background-color: white;
+}
+
+/* CATEGORIES */
+
+.top-categories{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.container-categories{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 3rem;
+}
+
+.card-category{
+    height: 20rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2rem;
+    gap: 2rem;
+}
+
+.category-anime{
+    background-image: linear-gradient(#00000080,#00000080),url(/img/anime2.jpg);
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+}
+
+.category-hogar{
+    background-image: linear-gradient(#00000080,#00000080),url(/img/hogar.jpeg);
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
+}
+
+.category-miniaturas{
+    background-image: linear-gradient(#00000080,#00000080),url(/img/miniaturas.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.card-category p{
+    font-size: 2.5rem;
+    color: white;
+    text-transform: capitalize;
+    position: relative;
+}
+
+.card-category p::after{
+    content: '';
+    width: 2.5rem;
+    height: 2px;
+    background-color: white;
+    position: absolute;
+    bottom: -1rem;
+    left: 50%;
+    transform: translate(-50%,50%);
+}
+
+.card-category span{
+    font-size: 1.6rem;
+    color: white;
+    cursor: pointer;
+}
+
+.card-category span:hover{
+    color: orange;
+}
+
+/* PRODUCTS */
+
+.top-products{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.container-options{
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 1rem;
+}
+
+.container-options span{
+    color: white;
+    background-color: orange;
+    padding: .7rem 3rem;
+    font-size: 1.4rem;
+    text-transform: capitalize;
+    border-radius: 2rem;
+    cursor: pointer;
+}
+
+.container-options span:hover{
+    background-color: white;
+    color: orange;
+    font-weight: 700;
+}
+
+.container-options span.active{
+    background-color: white;
+    color: orange;
+    font-weight: 700;
+}
+
+
+/* products */
+
+.container-products{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem,1fr));
+    gap: 3rem;
+}
+
+.card-products{
+    background-color: #f6f1ff;
+    padding: 2rem 3rem;
+    border-radius:.5rem;
+    cursor: pointer;
+    box-shadow: 0 0 2px rgb(0, 0, 0, .1);
+}
+
+.container-img{
+    position: relative;
+}
+
+.container-img img{
+    width: 100%;
+}
+
+.content-card-product{
+    display: grid;
+    justify-items: center;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(4,main-content);
+    row-gap: 1rem;
+}
+
+
+.stars{
+    grid-row: 1/2;
+    grid-column: 1/-1;
+}
+
+.stars i{
+    font-size: 1.3rem;
+    color: orange;
+}
+.content-card-product h3{
+    grid-row: 2/3;
+    grid-column: 1/-1;
+    font-weight: 700;
+    font-size: 1.6rem;
+    color: blueviolet ;
+    margin-bottom: 1rem;
+    cursor: pointer;
+}
+
+.content-card-product h3:hover{
+    color: orange;
+}
+
+.add-cart{
+    justify-self: start;
+    border: 2px solid orange;
+    padding: 1rem;
+    border-radius: 20%;
+transition: all .4s ease;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+     
+}
+
+.add-cart:hover{
+    background-color: orange;
+}
+
+.add-cart i{ 
+    font-size: 1.5rem;
+    
+}
+
+
+/* FOOTER */
+
+.footer{
+    background-color: blueviolet;
+
+}
+
+.container-footer{
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    padding: 3rem;
+    background-color: blueviolet;
+}
+
+.menu-footer{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr)30rem;
+    gap: 3rem;
+    justify-items: center;
+}
+
+.title-footer{
+    font-weight: 600;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+}
+
+.contact-info, .information, .my-account, .newsletter{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+
+.contact-info ul, .information ul, .my-account ul{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+
+
+
+.contact-info ul li, .information ul li, .my-account ul li{
+    list-style: none;
+    color: white;
+    font-size: 1.4rem;
+    font-weight: 300;
+}
+
+.information ul li a, .my-account ul li a{
+    text-decoration: none;
+    color: white;
+    font-weight: 300;
+}   
+
+.information ul li a:hover, .my-account ul li a:hover{
+    color: orange;
+}   
+
+.social-icons{
+    display: flex;
+    gap: 1.5rem;
+}
+
+.social-icons span{
+    border-radius: 50%;
+    width: 3rem;
+    /* height: 3rem; */
+    margin: 1px 20%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-icons span i{
+    color: white;
+    font-size: 1.2rem;
+}
+
+.facebook{
+    background-color: #3b5998;
+}
+
+.instagram{
+    background: linear-gradient(
+        #405de6,
+        #833ab4,
+        #c13584,
+        #e1306c,
+        #fd1d1d,
+        #f56040,
+        #fcaf45
+    )
+}
+
+.tiktok{
+    background-color: #000000;
+}
+
+.content p{
+    font-size: 1.4rem;
+    color: white;
+    font-weight: 300;
+}
+
+.content input{
+    outline: none;
+    background:none;
+    border: none;
+    border-bottom: 2px solid;
+    cursor: pointer;
+    padding: 0.5rem 0 1.2rem;
+    color: orange;
+    display: block;
+    margin-bottom: 3rem;
+    margin-top: 2rem;
+    width: 100%;
+    font-family: inherit;
+}
+
+.content input::-webkit-input-placeholder{
+    color: orange;
+}
+
+.content button{
+    border: none;
+    background-color: orange;
+    text-transform: uppercase;
+    padding: 1rem 3rem;
+    border-radius: 2rem;
+    font-size: 1.4rem;
+    font-family: inherit;
+    cursor: pointer;
+    font-weight: 600;
+    color: white;
+    transition: all 0.3s;
+}
+
+.content button:hover{
+    background-color: white ;
+    color: orange;
+    transform: scale(1.2);
+}
+
+.copyright{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 2rem;
+
+    border-top: 1px solid orange;
+}
+
+.copyright p{
+    font-weight: 500;
+    font-size: 1.6rem;
+}
+
+
+/* MEDIA QUERIES -- 768px */
+
+
+/* MEDIA QUERIES -- 468px */
+
