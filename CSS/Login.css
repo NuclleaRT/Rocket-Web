@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,800&display=swap');
+
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.logo {
+    height: 100px;
+    width: auto;
+    transition: all 0.3s;
+}
+.logo:hover{
+    transform: scale(1.2);
+}
+
+a{
+    text-decoration: none;
+}
+.back{
+margin-left: 1rem;
+margin-top: 1rem;
+color: blueviolet;
+}
+
+h2{
+    color: blueviolet;
+}
+
+.pass{
+    color: blueviolet;
+}
+
+.registrar{
+    color: black;
+    font-weight: 700;
+}
+.background-image {
+    flex: 2; /* Cambiado de 1 a 2 para hacer que este lado sea más grande */
+    background: url('/img/Login.jpeg') center/cover no-repeat;
+}
+
+.login-container {
+    flex: 1; /* Cambiado de 1 a 1 para equilibrar con el lado del formulario */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+}
+
+.btn {
+    font-weight: 700;    
+    font-size: 1rem;
+    color: white;
+    padding: 9px 25px;
+    background-color: orange;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    text-decoration: none;
+    
+}
+.left{
+    text-align: left;
+    font-weight: 300;
+}
+
+form {
+    width: 300px;
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin: 10px 0;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border-color: blueviolet;
+}
+
+button {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
