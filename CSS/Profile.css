@@ -3,12 +3,17 @@
 body {
     margin: 0;
     font-family: 'Nunito Sans', sans-serif;
-    overflow: hidden;
+    overflow-y: auto; /* Permitir el desplazamiento vertical */
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
 }
 
 .container {
     display: flex;
-    height: 100vh;
+    min-height: 100vh;
     background-color: #fff;
 }
 
@@ -17,12 +22,28 @@ body {
     padding: 20px;
     background-color: #fff;
     border-right: 1px solid #ddd; /* Línea vertical gris */
+    overflow-y: auto; /* Permitir el desplazamiento vertical en la sección izquierda */
+    box-sizing: border-box; /* Asegurar que el padding y el borde no afecten la altura total */
 }
 
 @media (min-width: 768px) {
     .left-section {
         flex: 0.5; /* En pantallas grandes, la sección izquierda es más pequeña */
     }
+}
+
+.right-section {
+    flex: 2;
+    padding: 20px;
+}
+
+.label-with-star {
+    color: blueviolet; /* Color por defecto del texto del label */
+}
+
+.label-with-star::after {
+    content: "*";
+    color: red; /* Color rojo para el símbolo "*" */
 }
 
 .user-info {
@@ -104,4 +125,56 @@ h2 {
     text-decoration: none;
 }
 
+.login-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+}
 
+.logo {
+    height: 100px;
+    width: auto;
+    transition: all 0.3s;
+}
+.logo:hover{
+    transform: scale(1.2);
+}
+
+form {
+    width: 300px;
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin: 10px 0;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border-color: blueviolet;
+}
+
+.left{
+    text-align: left;
+}
+
+.btn {
+    font-weight: 700;    
+    font-size: 1rem;
+    color: white;
+    padding: 9px 25px;
+    background-color: orange;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    text-decoration: none;
+}

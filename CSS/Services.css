@@ -1,0 +1,40 @@
+/* Estilos para la sección de servicios y wevy form */
+.landing-page {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.service-section {
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+
+
+
+.wevy-form h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.service-section {
+    border-radius: 15px; /* Bordes redondeados para cada sección de servicio */
+    overflow: hidden; /* Ocultar esquinas redondeadas */
+}
+
+.service-image {
+    width: 100px; /* Ajusta el tamaño de la imagen según tus necesidades */
+    border-radius: 50%; /* Hace que la imagen tenga bordes redondeados */
+}
+
+.wevy-form {
+    /* Añadir estilos para la forma de ola, por ejemplo, ajustando el padding, el margen, etc. */
+}
+
+.service-content {
+    padding: 20px; /* Ajusta el espaciado según tus necesidades */
+}

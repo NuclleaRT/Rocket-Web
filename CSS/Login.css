@@ -42,6 +42,11 @@ h2{
     color: black;
     font-weight: 700;
 }
+
+.recover{
+    color: blueviolet;
+}
+
 .background-image {
     flex: 2; /* Cambiado de 1 a 2 para hacer que este lado sea más grande */
     background: url('/img/Login.jpeg') center/cover no-repeat;
