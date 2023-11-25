@@ -1,40 +1,127 @@
-/* Estilos para la sección de servicios y wevy form */
-.landing-page {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+body {
+    margin: 0;
+    font-family: 'Nunito Sans', sans-serif;
+    overflow-y: auto; /* Permite el desplazamiento vertical */
 }
 
-.service-section {
-    padding: 50px;
+.header{
+    background-color: blueviolet;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    height: 85px;
+    padding: 5px 10%;    
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px; /* Añadido espacio alrededor del contenido */
+    box-sizing: border-box; /* Evita que el padding afecte el ancho total */
+}
+
+.header .logo{
+    cursor: pointer;
+}
+
+.header .logo img{
+    height: 70px;
+    width: auto;
+    transition: all 0.3s;
+}
+
+.header .logo img:hover{
+    transform: scale(1.2);
+}
+
+.header .nav-links li{
+    display: inline-block;
+    padding: 0 20px;
+}
+
+.header .nav-links li:hover{
+    transform: scale(1.1);
+}
+
+.header .nav-links a{
+    font-size: 700;
     color: white;
-    text-align: center;
+    text-decoration: none;
 }
 
+.header .nav-links a:hover{
+    color: orange;
+}
 
+.header .btn button{
+    font-weight: 700;
+    color: white;
+    padding: 9px 25px;
+    background-color: orange;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
 
-.wevy-form h2 {
+.header .btn button:hover{
+    background-color: white;
+    color: orange;
+    transform: scale(1.1);
+}
+
+.section {
+    
     font-size: 2rem;
-    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 0;        
+    background-size: cover;
+    padding: 20px;
+    color: white; /* Color del texto */
 }
 
-.service-section {
-    border-radius: 15px; /* Bordes redondeados para cada sección de servicio */
-    overflow: hidden; /* Ocultar esquinas redondeadas */
+
+
+.section2{
+    height: 30vh;
+    background-size: cover;
+    font-size: 2rem;    
+    background-image: url(/img/wave.svg);
 }
 
-.service-image {
-    width: 100px; /* Ajusta el tamaño de la imagen según tus necesidades */
-    border-radius: 50%; /* Hace que la imagen tenga bordes redondeados */
+.section3{
+    height: 30vh;
+    background-size: cover;
+    font-size: 2rem;
+    
+    background-image: url(/img/wave_bottom2.svg);
 }
 
-.wevy-form {
-    /* Añadir estilos para la forma de ola, por ejemplo, ajustando el padding, el margen, etc. */
+
+.section img {
+    width: 50%;
+    height: 50%;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    margin-right: 10px;
 }
 
-.service-content {
-    padding: 20px; /* Ajusta el espaciado según tus necesidades */
+.section.inverted {
+    flex-direction: row-reverse;
 }
+
+.section-text {
+    flex: 1;
+}
+
+.section-text h2{
+    color: blueviolet;
+}
+.section-text p {
+    color: black; /* Color del texto */
+}
+
+
+
