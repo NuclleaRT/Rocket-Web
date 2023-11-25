@@ -135,11 +135,6 @@ body {
     
 }
 
-.content-banner{
-    max-width: 90rem;
-    margin: 0 auto;
-    padding: 15rem 0;
-}
 
 .banner h2{
     display: flex;
@@ -150,6 +145,133 @@ body {
     font-size: 3.5rem;
     font-weight: 700;
     line-height: 1.2;
+}
+
+.banner input {     
+    padding: 10px;
+    margin-left: 190%;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border-color: blueviolet;
+}
+form {
+    width: 300px;
+    text-align: center;
+}
+
+.heading-1{
+    text-align: center;
+    font-weight: 700;
+    font-size: 3rem;
+    color: blueviolet;
+}
+
+
+/* Descripcion Producto */
+
+.product-details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.product-images {
+    flex: 1 1 60%; /* Ajusta según sea necesario */
+    max-width: 60%;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.additional-images {
+    flex: 1 1 35%; /* Ajusta según sea necesario */
+    max-width: 35%;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.product-images img {
+    width: 70%;    
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.view-3d-button {
+    background-color: blueviolet;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.additional-images {
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+
+.additional-images img {
+    width: 48%; /* Ajusta según sea necesario para dejar un pequeño espacio entre las imágenes */
+    
+    
+    border-radius: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+/* Estilo adicional para una mejor presentación en pantallas pequeñas */
+
+@media (max-width: 768px) {
+    .additional-images img {
+        width: 100%;
+    }
+}
+
+
+/* Productos Recomendados */
+
+.product-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.product-card {
+    width: 200px;
+    margin: 10px;
+    padding: 15px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.product-card img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.product-card p {
+    color: orange;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.add-to-cart {
+    background-color: blueviolet;
+    color: white;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.add-to-cart:hover {
+    background-color: #8a2be2;
 }
 
 /* FOOTER */
