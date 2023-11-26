@@ -31,28 +31,67 @@
         </div>
     </header>
 
-    <div class="banner">
-        <h2>Productos</h2>
-        <form action="#" method="get">
-        <input type="text" placeholder="Buscar Productos" id="buscar" name="buscar">
+    
+
+    <div class="banner" >
+        <h2>Productos </h2>
+        <form action="#" method="get" class="search-form">
+            <div class="search-container">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="Buscar Productos" id="buscar" name="buscar" class="search-input">
+            </div>
         </form>
+              
     </div>
 
+    <h1 class="heading-1">Link Legend of Zelda</h1>
     
-    
-
-    <div class="product-details">
-        <div class="product-images">
-            <img src="/img/link.jpg" alt="Producto Grande">
-            
-        </div>
-        <div class="additional-images">
-            <img src="/img/link-5.jpg" alt="Producto 1">
-            <img src="/img/link-2.jpg" alt="Producto 2">
-            <img src="/img/link-3.jpg" alt="Producto 3">
-            <img src="/img/link-4.jpg" alt="Producto 4">
-        </div>
+    <section class="gallery">
+        <img src="/img/link.jpg" alt="" class="gallery-img-1">        
+        <img src="/img/link-2.jpg" alt="" class="gallery-img-2">
+        <img src="/img/link-3.jpg" alt="" class="gallery-img-3">
+        <img src="/img/link-4.jpg" alt="" class="gallery-img-4">
+        <img src="/img/link-5.jpg" alt="" class="gallery-img-5">
+    </section>
+    <div class="btn-3D">
+        <button class="gallery-button">Visualizar en 3D</button>
     </div>
+    
+    <!-- Modal -->
+<div class="modal" id="myModal">
+    <div class="modal-content">
+        <span class="close" id="closeModal">&times;</span>
+        <!-- Contenido del modal (puedes colocar aquí tu visualizador 3D) -->
+        <p>Contenido del modal...</p>
+    </div>
+</div>
+
+
+   
+<!-- Detalles del Producto fuera de la sección de galería -->
+<div class="product-details">
+    <div class="product-description">
+        <!-- Contenido del detalle del producto -->
+        <h2>Descripción del Producto:</h2>
+        <p>La figura de Link The Legend of Zelda impresa en 3D y 
+            pintada a mano es una obra de arte meticulosamente elaborada
+            que combina tecnología de punta con una artesanía 
+            excepcional. Esta figura de gran detalle se imprime 
+            con impresoras de resina 4K, lo que garantiza que cada 
+            detalle intrincado de Link se reproduzca con precisión.</p>
+    </div>
+    <div class="product-options">
+        <select  class="search-input">
+            <option value="small">Pequeño (15 cm) - $35.000</option>
+            <option value="medium">Mediano (20 cm) - $45.000</option>
+            <option value="large">Grande (25 cm) - $55.000</option>
+        </select>
+        <p>15 días de espera luego de realizar el pedido</p>
+        <p>Envíos a todo Chile</p>
+        <button class="add-to-cart-button">Agregar al Carrito</button>
+    </div>
+</div>
+
 
     <section class="container top-categories">
         <h1 class="heading-1">Productos Recomendados</h1>
@@ -155,5 +194,30 @@
     
         </div>
       </footer>
+      <script src="https://kit.fontawesome.com/ec58002104.js" crossorigin="anonymous"></script>
+      <script>
+        // Obtener elementos del DOM
+        var modal = document.getElementById("myModal");
+        var btn = document.querySelector(".gallery-button");
+        var span = document.getElementById("closeModal");
+    
+        // Función para abrir el modal
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+    
+        // Función para cerrar el modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+    
+        // Cerrar modal al hacer clic fuera del contenido
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+    
 </body>
 </html>
