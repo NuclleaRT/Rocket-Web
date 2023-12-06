@@ -149,7 +149,9 @@ body {
 
 .banner input {     
     padding: 10px;
-    margin-left: 190%;
+    display: grid;
+    grid-template-columns: 2;
+    
     box-sizing: border-box;
     border-radius: 5px;
     border-color: blueviolet;

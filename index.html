@@ -78,87 +78,8 @@
                 </div>
                 
             </div>
-            <!--Producto 2-->
-            <div class="card-products">
-                <div class="container-img">
-                    <img src="/img/mandalorian.jpg" alt="mandalorian">
-                    <div class="content-card-product">
-                  
-                        <h3>Mandalorian</h3>
-                        <p>$35.000</p>                  
-                    </div>
-                    <div class="btn-cart">                    
-                        <a href="#">Agregar al carro </a>
-                    </div>
-
-                </div>
-                
-            </div>
-            <!--Producto 3-->
-            <div class="card-products">
-                <div class="container-img">
-                    <img src="/img/mandalorian.jpg" alt="mandalorian">
-                    <div class="content-card-product">
-                 
-                        <h3>Mandalorian</h3>
-                        <p>$35.000</p>                   
-                    </div>
-                    <div class="btn-cart">                    
-                        <a href="#">Agregar al carro </a>
-                    </div>
-
-                </div>
-               
-            </div>
-            <!--Procudto 4-->
-            <div class="card-products">
-                <div class="container-img">
-                    <img src="/img/mandalorian.jpg" alt="mandalorian">
-                    <div class="content-card-product">
-                   
-                        <h3>Mandalorian</h3>
-                        <p>$35.000</p>                    
-                    </div>
-                    <div class="btn-cart">                    
-                        <a href="#">Agregar al carro </a>
-                    </div>
-
-                </div>
-                
-            </div>
-        <!-- Producto 5-->
-        <div class="card-products">
-            <div class="container-img">
-                <img src="/img/mandalorian.jpg" alt="mandalorian">
-                <div class="content-card-product">
-                
-                    <h3>Mandalorian</h3>
-                    <p>$35.000</p>                    
-                </div>
-                <div class="btn-cart">                    
-                    <a href="#">Agregar al carro </a>
-                </div>
-            </div>
-        
-         
-        </div>
-        <!-- Producto 6-->
-        <div class="card-products">
-            <div class="container-img">
-                <img src="/img/mandalorian.jpg" alt="mandalorian">
-                <div class="content-card-product">
-               
-                    <h3>Mandalorian</h3>
-                    <p>$35.000</p>                  
-                </div>
-                <div class="btn-cart">                    
-                    <a href="#">Agregar al carro </a>
-                </div>
-                           
-            </div>
-            
-        </div>
-        </div>
+           
+    
                
     </section>
 
@@ -250,5 +171,40 @@
     </div>
   </footer>
   <script src="https://kit.fontawesome.com/ec58002104.js" crossorigin="anonymous"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        fetch('http://127.0.0.1:8000/productos-recomendados/')
+            .then(response => response.json())
+            .then(data => {
+                console.log('Respuesta de la API (productos recomendados):', data);
+
+                const productosContainer = document.querySelector('.container-products');
+
+                data.forEach(producto => {
+                    const card = document.createElement('div');
+                    card.className = 'card-products';
+
+                    card.innerHTML = `
+                        <div class="container-img">
+                            <img src="/img/${producto.nombre}.jpg" alt="${producto.nombre}">
+                            <div class="content-card-product">
+                                <h3>${producto.nombre}</h3>
+                                <p>$${producto.precio}</p>
+                            </div>
+                            <div class="btn-cart">
+                                <a href="#">Agregar al carro</a>
+                            </div>
+                        </div>
+                    `;
+
+                    productosContainer.appendChild(card);
+                });
+            })
+            .catch(error => {
+                console.error('Error al obtener productos recomendados:', error);
+            });
+    });
+</script>
+
 </body>
 </html>

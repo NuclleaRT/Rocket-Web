@@ -45,39 +45,11 @@
     </div>
 
     <section class="container top-categories">
-        <h1 class="heading-1">Productos Recomendados</h1>
+        <h1 class="heading-1">Nuestros Productos</h1>
         <div class="product-cards">
-            <!-- Producto 1 -->
-            <div class="product-card">
-                <img src="/img/link.jpg" alt="Producto 1">
-                <h3>Link The Legend of Zelda</h3>
-                <p>$35.000</p>
-                <button class="add-to-cart">Agregar al Carrito</button>
-            </div>
+       
     
-            <!-- Producto 2 -->
-            <div class="product-card">
-                <img src="/img/link.jpg" alt="Producto 2">
-                <h3>Nombre del Producto 2</h3>
-                <p>Precio: $29.99</p>
-                <button class="add-to-cart">Agregar al Carrito</button>
-            </div>
-    
-            <!-- Producto 3 -->
-            <div class="product-card">
-                <img src="/img/link.jpg" alt="Producto 3">
-                <h3>Nombre del Producto 3</h3>
-                <p>Precio: $39.99</p>
-                <button class="add-to-cart">Agregar al Carrito</button>
-            </div>
-    
-            <!-- Producto 4 -->
-            <div class="product-card">
-                <img src="/img/link.jpg" alt="Producto 4">
-                <h3>Nombre del Producto 4</h3>
-                <p>Precio: $49.99</p>
-                <button class="add-to-cart">Agregar al Carrito</button>
-            </div>
+           
         </div>
     </section>    
 
@@ -145,5 +117,77 @@
     
         </div>
       </footer>
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Selecciona el contenedor donde deseas mostrar los productos
+            const productosContainer = document.querySelector('.container .product-cards');
+    
+            // Realiza la solicitud GET a la API para obtener todos los productos
+            fetch('http://127.0.0.1:8000/products/catalog')
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Respuesta de la API (productos):', data);
+    
+                    // Itera sobre los productos y crea las tarjetas correspondientes
+                    data.forEach(producto => {
+                        const productCard = document.createElement('div');
+                        productCard.classList.add('product-card');
+    
+                        productCard.innerHTML = `
+                            <img src="/img/${producto.nombre}.jpg" alt="${producto.nombre}">
+                            <h3>${producto.nombre}</h3>
+                            <p>$${producto.precio.toFixed(3)}</p>
+                            <button class="add-to-cart">Agregar al Carrito</button>
+                        `;
+    
+                        productosContainer.appendChild(productCard);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error al obtener productos:', error);
+                });
+    
+            // Agrega un evento al formulario de búsqueda
+            const searchForm = document.querySelector('form');
+            searchForm.addEventListener('submit', function (event) {
+                event.preventDefault();
+    
+                // Obtiene el valor del campo de búsqueda
+                const searchTerm = document.getElementById('buscar').value;
+    
+                // Realiza la solicitud GET a la API para buscar productos
+                fetch(`http://127.0.0.1:8000/products/search?query=${searchTerm}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Respuesta de la API (productos filtrados):', data);
+    
+                        // Elimina los productos existentes en el contenedor
+                        productosContainer.innerHTML = '';
+    
+                        // Itera sobre los productos filtrados y crea las tarjetas correspondientes
+                        data.forEach(producto => {
+                            const productCard = document.createElement('div');
+                            productCard.classList.add('product-card');
+    
+                            productCard.innerHTML = `
+                                <img src="/img/${producto.nombre}.jpg" alt="${producto.nombre}">
+                                <h3>${producto.nombre}</h3>
+                                <p>$${producto.precio.toFixed(3)}</p>
+                                <button class="add-to-cart">Agregar al Carrito</button>
+                            `;
+    
+                            productosContainer.appendChild(productCard);
+                        });
+                    })
+                    .catch(error => {
+                        console.error('Error al obtener productos filtrados:', error);
+                    });
+            });
+        });
+    </script>
+    
+    
+    
+    
 </body>
 </html>
