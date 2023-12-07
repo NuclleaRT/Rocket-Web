@@ -30,7 +30,6 @@
             </div>
         </div>
     </header>
-
     
 
     <div class="banner" >
@@ -44,14 +43,11 @@
               
     </div>
 
-    <h1 class="heading-1">Link Legend of Zelda</h1>
+    <h1 class="heading-1" id="product-name"></h1>
     
     <section class="gallery">
         <img src="/img/link.jpg" alt="" class="gallery-img-1">        
-        <img src="/img/link-2.jpg" alt="" class="gallery-img-2">
-        <img src="/img/link-3.jpg" alt="" class="gallery-img-3">
-        <img src="/img/link-4.jpg" alt="" class="gallery-img-4">
-        <img src="/img/link-5.jpg" alt="" class="gallery-img-5">
+        
     </section>
     <div class="btn-3D">
         <button class="gallery-button">Visualizar en 3D</button>
@@ -61,13 +57,13 @@
     
 <div class="modal" id="myModal">
     <div class="modal-content">
-        <span class="close" id="closeModal">&times;</span>
-        <!-- Contenido del modal (puedes colocar aquí tu visualizador 3D) -->
+        <span class="close" id="closeModal">&times;</span>       
         <div class="div-prueba">
-        <div id="appar">
+            <!-- aqui van los datos de vista3D -->
+        <!-- <div id="appar">
             <input hidden value="2755" style="display: none" id="productCode">
             <script src="https://webviewer.appar.io/AppAR-Connector.js"></script>
-        </div>
+        </div> -->
     </div>
 
     </div>
@@ -80,12 +76,8 @@
     <div class="product-description">
         <!-- Contenido del detalle del producto -->
         <h2>Descripción del Producto:</h2>
-        <p>La figura de Link The Legend of Zelda impresa en 3D y 
-            pintada a mano es una obra de arte meticulosamente elaborada
-            que combina tecnología de punta con una artesanía 
-            excepcional. Esta figura de gran detalle se imprime 
-            con impresoras de resina 4K, lo que garantiza que cada 
-            detalle intrincado de Link se reproduzca con precisión.</p>
+        <p id="product-description">aqui va la descripcion del prducto</p>
+
     </div>
     <div class="product-options">
         <select  class="search-input">
@@ -157,15 +149,7 @@
               </div>
             </div>
     
-            <div class="information">
-                <p class="title-footer">Información</p>
-                <ul>
-                  <li><a href="#">Acerca de Nosotros</a></li>
-                  <li><a href="#">Politícas de privacidad</a></li>
-                  <li><a href="#">Términos y Condiciones</a></li>
-                  <li><a href="#">Contactános</a></li>
-                </ul>
-            </div>
+           
     
             <div class="my-account">
               <p class="title-footer">Mi Cuenta</p>
@@ -225,6 +209,60 @@
             }
         }
     </script>
+
+
+    
+    <script>
+       document.addEventListener("DOMContentLoaded", function () {
+    // Obtén el ID del producto de la URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = urlParams.get('id');
+
+    // Selecciona los elementos donde deseas mostrar los detalles del producto
+    const productName = document.getElementById('product-name');
+    const productDescription = document.getElementById('product-description');
+    const modal = document.querySelector('.modal');
+    const iframe3D = document.querySelector('.div-prueba'); // Modificado para seleccionar la div de prueba
+
+    // Realiza la solicitud GET a la API para obtener detalles del producto
+    fetch(`http://127.0.0.1:8000/products/details/${productId}`)
+        .then(response => response.json())
+        .then(data => {
+            console.log('Respuesta de la API (detalles del producto):', data);
+
+            // Muestra los detalles del producto en la página
+            productName.textContent = data.nombre;
+            productDescription.textContent = data.descripcion;
+
+            console.log('Descripción del producto:', data.descripcion);
+            // Configura el modal para mostrar la vista 3D
+            // (Aquí asumo que tienes la URL de la vista 3D en el campo 'vista3D' de la respuesta)
+            iframe3D.innerHTML = data.vista3D; // Cambiado de src a innerHTML
+
+            // Muestra el modal cuando haces clic en el producto
+            productName.addEventListener('click', function () {
+                modal.style.display = 'block';
+            });
+
+            // Cierra el modal cuando haces clic en la 'x'
+            modal.querySelector('.close').addEventListener('click', function () {
+                modal.style.display = 'none';
+            });
+
+            // Cierra el modal cuando haces clic fuera de él
+            window.addEventListener('click', function (event) {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        })
+        .catch(error => {
+            console.error('Error al obtener detalles del producto:', error);
+        });
+});
+
+    </script>
+
     
 </body>
 </html>

@@ -119,34 +119,35 @@
       </footer>
       <script>
         document.addEventListener("DOMContentLoaded", function () {
-            // Selecciona el contenedor donde deseas mostrar los productos
-            const productosContainer = document.querySelector('.container .product-cards');
-    
-            // Realiza la solicitud GET a la API para obtener todos los productos
-            fetch('http://127.0.0.1:8000/products/catalog')
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Respuesta de la API (productos):', data);
-    
-                    // Itera sobre los productos y crea las tarjetas correspondientes
-                    data.forEach(producto => {
-                        const productCard = document.createElement('div');
-                        productCard.classList.add('product-card');
-    
-                        productCard.innerHTML = `
-                            <img src="/img/${producto.nombre}.jpg" alt="${producto.nombre}">
-                            <h3>${producto.nombre}</h3>
-                            <p>$${producto.precio.toFixed(3)}</p>
-                            <button class="add-to-cart">Agregar al Carrito</button>
-                        `;
-    
-                        productosContainer.appendChild(productCard);
-                    });
-                })
-                .catch(error => {
-                    console.error('Error al obtener productos:', error);
-                });
-    
+          const productosContainer = document.querySelector('.container .product-cards');
+  
+          fetch('http://127.0.0.1:8000/products/catalog')
+              .then(response => response.json())
+              .then(data => {
+                  console.log('Respuesta de la API (productos):', data);
+  
+                  data.forEach(producto => {
+                      const productCard = document.createElement('div');
+                      productCard.classList.add('product-card');
+  
+                      productCard.innerHTML = `
+                          <a href="/html/Description.html?id=${producto.id}">
+                              <img src="/img/${producto.nombre}.jpg" alt="${producto.nombre}">
+                          </a>
+                          <h3>${producto.nombre}</h3>
+                          <p>$${producto.precio.toFixed(3)}</p>
+                          <button class="add-to-cart">Agregar al Carrito</button>
+                      `;
+  
+                      productosContainer.appendChild(productCard);
+                  });
+              })
+              .catch(error => {
+                  console.error('Error al obtener productos:', error);
+              });
+      
+
+              
             // Agrega un evento al formulario de búsqueda
             const searchForm = document.querySelector('form');
             searchForm.addEventListener('submit', function (event) {
