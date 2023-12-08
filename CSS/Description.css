@@ -231,6 +231,12 @@ body {
     cursor: pointer;
 }
 
+.centered-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%; /* O ajusta la altura según tus necesidades */
+}
 
 
 /* Descripcion Producto */
@@ -321,7 +327,7 @@ body {
 
 
 .add-to-cart-button {
-    background-color: orange;
+    background-color: orange;    
     color: white;
     border: none;
     border-radius: 10px;
@@ -387,6 +393,12 @@ body {
 
 .add-to-cart:hover {
     background-color: #8a2be2;
+    
+}
+
+.add-to-cart a{
+    text-decoration: none;
+    color: white;
 }
 
 /* FOOTER */

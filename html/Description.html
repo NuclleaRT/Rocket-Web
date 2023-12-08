@@ -46,7 +46,7 @@
     <h1 class="heading-1" id="product-name"></h1>
     
     <section class="gallery">
-        <img src="/img/link.jpg" alt="" class="gallery-img-1">        
+        <img src="" alt="" class="gallery-img-1">        
         
     </section>
     <div class="btn-3D">
@@ -58,19 +58,18 @@
 <div class="modal" id="myModal">
     <div class="modal-content">
         <span class="close" id="closeModal">&times;</span>       
-        <div class="div-prueba">
-            <!-- aqui van los datos de vista3D -->
-        <!-- <div id="appar">
-            <input hidden value="2755" style="display: none" id="productCode">
-            <script src="https://webviewer.appar.io/AppAR-Connector.js"></script>
-        </div> -->
-    </div>
+        <div class="div-prueba centered-content">
+            <iframe src="https://webviewer.appar.io/" style="border:0px #ffffff none;" name="appar"
+                    scrolling="no" frameborder="0" allow="camera" marginheight="0px" marginwidth="0px" height="500px"
+                    width="600px" allowfullscreen>
+            </iframe>
+
+        </div>
 
     </div>
 </div>
 
-
-   
+ 
 <!-- Detalles del Producto fuera de la sección de galería -->
 <div class="product-details">
     <div class="product-description">
@@ -95,37 +94,7 @@
     <section class="container top-categories">
         <h1 class="heading-1">Productos Recomendados</h1>
         <div class="product-cards">
-            <!-- Producto 1 -->
-            <div class="product-card">
-                <img src="/img/link.jpg" alt="Producto 1">
-                <h3>Link The Legend of Zelda</h3>
-                <p>$35.000</p>
-                <button class="add-to-cart">Agregar al Carrito</button>
-            </div>
-    
-            <!-- Producto 2 -->
-            <div class="product-card">
-                <img src="/img/link.jpg" alt="Producto 2">
-                <h3>Nombre del Producto 2</h3>
-                <p>Precio: $29.99</p>
-                <button class="add-to-cart">Agregar al Carrito</button>
-            </div>
-    
-            <!-- Producto 3 -->
-            <div class="product-card">
-                <img src="/img/link.jpg" alt="Producto 3">
-                <h3>Nombre del Producto 3</h3>
-                <p>Precio: $39.99</p>
-                <button class="add-to-cart">Agregar al Carrito</button>
-            </div>
-    
-            <!-- Producto 4 -->
-            <div class="product-card">
-                <img src="/img/link.jpg" alt="Producto 4">
-                <h3>Nombre del Producto 4</h3>
-                <p>Precio: $49.99</p>
-                <button class="add-to-cart">Agregar al Carrito</button>
-            </div>
+            
         </div>
     </section>    
 
@@ -213,56 +182,80 @@
 
     
     <script>
-       document.addEventListener("DOMContentLoaded", function () {
-    // Obtén el ID del producto de la URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const productId = urlParams.get('id');
+        document.addEventListener("DOMContentLoaded", function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = urlParams.get('id');
+            const productName = document.getElementById('product-name');
+            const productDescription = document.getElementById('product-description');
+            const iframeElement = document.querySelector('.div-prueba iframe');
+            const modal = document.querySelector('.modal');
+               // Selecciona el elemento de la imagen por su id
+            const productImage = document.querySelector('.gallery-img-1');
 
-    // Selecciona los elementos donde deseas mostrar los detalles del producto
-    const productName = document.getElementById('product-name');
-    const productDescription = document.getElementById('product-description');
-    const modal = document.querySelector('.modal');
-    const iframe3D = document.querySelector('.div-prueba'); // Modificado para seleccionar la div de prueba
+            fetch(`http://127.0.0.1:8000/products/details/${productId}`)
+                .then(response => response.json())
+                .then(data => {
+                    productName.textContent = data.nombre;
+                    productDescription.textContent = data.descripcion;
+                    const imageUrl = `/img/${data.nombre}.jpg`;
+                    // Actualiza la imagen del producto
+                    productImage.src = imageUrl;
 
-    // Realiza la solicitud GET a la API para obtener detalles del producto
-    fetch(`http://127.0.0.1:8000/products/details/${productId}`)
-        .then(response => response.json())
-        .then(data => {
-            console.log('Respuesta de la API (detalles del producto):', data);
+                    iframeElement.src = `https://webviewer.appar.io/${data.vista3D}`;
 
-            // Muestra los detalles del producto en la página
-            productName.textContent = data.nombre;
-            productDescription.textContent = data.descripcion;
+                    productName.addEventListener('click', function () {
+                        modal.style.display = 'block';
+                    });
 
-            console.log('Descripción del producto:', data.descripcion);
-            // Configura el modal para mostrar la vista 3D
-            // (Aquí asumo que tienes la URL de la vista 3D en el campo 'vista3D' de la respuesta)
-            iframe3D.innerHTML = data.vista3D; // Cambiado de src a innerHTML
+                    modal.querySelector('.close').addEventListener('click', function () {
+                        modal.style.display = 'none';
+                    });
 
-            // Muestra el modal cuando haces clic en el producto
-            productName.addEventListener('click', function () {
-                modal.style.display = 'block';
-            });
-
-            // Cierra el modal cuando haces clic en la 'x'
-            modal.querySelector('.close').addEventListener('click', function () {
-                modal.style.display = 'none';
-            });
-
-            // Cierra el modal cuando haces clic fuera de él
-            window.addEventListener('click', function (event) {
-                if (event.target === modal) {
-                    modal.style.display = 'none';
-                }
-            });
-        })
-        .catch(error => {
-            console.error('Error al obtener detalles del producto:', error);
+                    window.addEventListener('click', function (event) {
+                        if (event.target === modal) {
+                            modal.style.display = 'none';
+                        }
+                    });
+                })
+                .catch(error => {
+                    console.error('Error al obtener detalles del producto:', error);
+                });
         });
-});
-
     </script>
-
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch('http://127.0.0.1:8000/productos-recomendados/')
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Respuesta de la API (productos recomendados):', data);
+    
+                    const productosContainer = document.querySelector('.product-cards');
+    
+                    data.forEach(producto => {
+                        const card = document.createElement('div');
+                        card.className = 'card-products';
+    
+                        card.innerHTML = `
+                                <div class="product-card">
+                                <img src="/img/${producto.nombre}.jpg" alt="${producto.nombre}">
+                                <div class="content-card-product">
+                                    <h3>${producto.nombre}</h3>
+                                    <p>$${producto.precio.toFixed(3)}</p>
+                                </div>
+                                <div class="add-to-cart">
+                                    <a href="#">Agregar al carro</a>
+                                </div>
+                            </div>
+                        `;
+    
+                        productosContainer.appendChild(card);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error al obtener productos recomendados:', error);
+                });
+        });
+    </script>
     
 </body>
 </html>
