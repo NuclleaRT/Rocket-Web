@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/CSS/Description.css">
-    <title>Productos</title>
+    <title>Descripcion Producto</title>
 </head>
 <body>
 
@@ -17,47 +17,64 @@
                 <li><a href="/index.html">Inicio</a></li>
                 <li><a href="/html/Services.html">Servicios</a></li>
                 <li><a href="/html/Products.html">Productos</a></li>
-                <li><a href="/html/Impresion3D.html">Impresion 3D</a></li>               
-                <li><a href="/html/Contact.html">Contacto</a></li>              
+                <li><a href="/html/Impresion3D.html">Impresion 3D</a></li>
+                <li><a href="/html/Contact.html">Contacto</a></li>
             </ul>
         </nav>
         <a href="/html/Login.html" class="btn"><button>Ingresar</button></a>
-        <div class="container-user">           
-            <i class="fa-solid fa-cart-shopping"></i>
-            <div class="content-shopping-cart">
-                <span class="text">Carrito</span>
-                <span class="number">(0)</span>
+        <div class="container-user">
+            <div class="two columns u-pull-right">
+                <ul>
+                    <li class="submenu">
+                        <i class="fa-solid fa-cart-shopping" id="img-carrito"></i>
+                            <!-- <img src="/img/cart.png" id="img-carrito"> -->
+                            <div id="carrito">
+
+                                    <table id="lista-carrito" >
+                                        <thead>
+                                            <tr>
+                                                <th>Imagen</th>
+                                                <th>Nombre</th>
+                                                <th>Precio</th>
+                                                <th>Cantidad</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                    <div class="vaciar-carrito">
+                                        <a href="#" id="vaciar-carrito" >Vaciar Carrito</a>
+                                    </div>  
+                            </div>
+                    </li>
+                </ul>
+            </div>
             </div>
         </div>
     </header>
-    
+
 
     <div class="banner" >
         <h2>Productos </h2>
-        <form action="#" method="get" class="search-form">
-            <div class="search-container">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" placeholder="Buscar Productos" id="buscar" name="buscar" class="search-input">
-            </div>
-        </form>
-              
+
+
     </div>
 
     <h1 class="heading-1" id="product-name"></h1>
-    
+
     <section class="gallery">
-        <img src="" alt="" class="gallery-img-1">        
-        
+        <img src="" alt="" class="gallery-img-1">
+
     </section>
     <div class="btn-3D">
         <button class="gallery-button">Visualizar en 3D</button>
     </div>
-    
+
     <!-- Modal -->
-    
+
 <div class="modal" id="myModal">
     <div class="modal-content">
-        <span class="close" id="closeModal">&times;</span>       
+        <span class="close" id="closeModal">&times;</span>
         <div class="div-prueba centered-content">
             <iframe src="https://webviewer.appar.io/" style="border:0px #ffffff none;" name="appar"
                     scrolling="no" frameborder="0" allow="camera" marginheight="0px" marginwidth="0px" height="500px"
@@ -69,7 +86,7 @@
     </div>
 </div>
 
- 
+
 <!-- Detalles del Producto fuera de la sección de galería -->
 <div class="product-details">
     <div class="product-description">
@@ -86,7 +103,7 @@
         </select>
         <p>15 días de espera luego de realizar el pedido</p>
         <p>Envíos a todo Chile</p>
-        <button class="add-to-cart-button">Agregar al Carrito</button>
+        <button class="add-to-cart-button agregar-carrito">Agregar al Carrito</button>
     </div>
 </div>
 
@@ -94,35 +111,36 @@
     <section class="container top-categories">
         <h1 class="heading-1">Productos Recomendados</h1>
         <div class="product-cards">
-            
+
         </div>
-    </section>    
+    </section>
+
 
     <footer class="footer">
-      
-  
+
+
         <div class="container container-footer">
           <div class="menu-footer">
             <div class="contact-info">
               <p class="title-footer">Informacion de contacto</p>
               <ul>
                   <li>Whatshapp: +596 78945645</li>
-                  <li>Email: Rocket.3D@gmail.com</li>            
+                  <li>Email: Rocket.3D@gmail.com</li>
               </ul>
               <div class="social-icons">
                   <span>
                     <span class="facebook"><i class="fa-brands fa-facebook-f"></i></span>
                     <span class="instagram"><i class="fa-brands fa-instagram"></i></span>
-                    <span class="tiktok"><i class="fa-brands fa-tiktok"></i></span>              
-                  </span>  
+                    <span class="tiktok"><i class="fa-brands fa-tiktok"></i></span>
+                  </span>
               </div>
             </div>
-    
-           
-    
+
+
+
             <div class="my-account">
               <p class="title-footer">Mi Cuenta</p>
-    
+
               <ul>
                 <li><a href="#">Mi Cuenta</a></li>
                 <li><a href="#">Historial de pedido</a></li>
@@ -130,28 +148,28 @@
                 <li><a href="#">Reembolso</a></li>
               </ul>
             </div>
-    
+
             <div class="newsletter">
               <p class="title-footer">Boletín Informativo</p>
-    
+
               <div class="content">
                   <p>
-                    Suscribete a nuestros boletines ahora y mantente al dia 
+                    Suscribete a nuestros boletines ahora y mantente al dia
                     con nuevas colecciones y ofertas exclusivas.
                   </p>
                   <input type="email" placeholder="Ingresa tu correo aqui...">
-                  <button>Suscríbete</button> 
+                  <button>Suscríbete</button>
               </div>
             </div>
           </div>
-    
+
           <div class="copyright">
               <p>
                 Desarrollado por Cristobal Ruiz para el mundo &copy; 2023
               </p>
               <img src="/img/Payment_Options.png" alt="Payment_Options">
           </div>
-    
+
         </div>
       </footer>
       <script src="https://kit.fontawesome.com/ec58002104.js" crossorigin="anonymous"></script>
@@ -160,17 +178,17 @@
         var modal = document.getElementById("myModal");
         var btn = document.querySelector(".gallery-button");
         var span = document.getElementById("closeModal");
-    
+
         // Función para abrir el modal
         btn.onclick = function() {
             modal.style.display = "block";
         }
-    
+
         // Función para cerrar el modal
         span.onclick = function() {
             modal.style.display = "none";
         }
-    
+
         // Cerrar modal al hacer clic fuera del contenido
         window.onclick = function(event) {
             if (event.target == modal) {
@@ -180,7 +198,7 @@
     </script>
 
 
-    
+
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const urlParams = new URLSearchParams(window.location.search);
@@ -220,6 +238,10 @@
                 .catch(error => {
                     console.error('Error al obtener detalles del producto:', error);
                 });
+
+
+
+
         });
     </script>
     <script>
@@ -228,13 +250,13 @@
                 .then(response => response.json())
                 .then(data => {
                     console.log('Respuesta de la API (productos recomendados):', data);
-    
+
                     const productosContainer = document.querySelector('.product-cards');
-    
+
                     data.forEach(producto => {
                         const card = document.createElement('div');
                         card.className = 'card-products';
-    
+
                         card.innerHTML = `
                                 <div class="product-card">
                                 <img src="/img/${producto.nombre}.jpg" alt="${producto.nombre}">
@@ -246,8 +268,9 @@
                                     <a href="#">Agregar al carro</a>
                                 </div>
                             </div>
+
                         `;
-    
+
                         productosContainer.appendChild(card);
                     });
                 })
@@ -256,6 +279,12 @@
                 });
         });
     </script>
-    
+    <script>
+  
+
+   
+        
+    </script>
+
 </body>
 </html>

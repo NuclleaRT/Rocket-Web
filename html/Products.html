@@ -18,25 +18,24 @@
               <li><a href="/html/Services.html">Servicios</a></li>
               <li><a href="#">Productos</a></li>
               <li><a href="/html/Impresion3D.html">Impresion 3D</a></li>               
-              <li><a href="">Contacto</a></li>               
+              <li><a href="/html/Contact.html">Contacto</a></li>               
             </ul>
         </nav>
         <a href="/html/Login.html" class="btn"><button>Ingresar</button></a>
         <div class="container-user">           
-            <i class="fa-solid fa-cart-shopping"></i>
             <div class="content-shopping-cart">
-                <span class="text">Carrito</span>
-                <span class="number">(0)</span>
-            </div>
+              
         </div>
     </header>
 
-    <div class="banner">
-        <h2>Productos</h2>
-        <form action="#" method="get">
-        <input type="text" placeholder="Buscar Productos" id="buscar" name="buscar">
+    <div class="banner" >
+        <h2>Productos </h2>
+        <form action="#" method="get" class="search-form">
+            <div class="search-container">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="Buscar Productos" id="buscar" name="buscar" class="search-input">
+            </div>
         </form>
-    </div>
 
     <div class="container">
        <table>
@@ -52,6 +51,25 @@
            
         </div>
     </section>    
+
+
+
+    <div class="cart">
+      <h3>Carrito de Compras</h3>
+      <ul id="cart-items">
+          <!-- Los elementos del carrito se agregarán aquí dinámicamente -->
+      </ul>
+      <p>Total: $<span id="cart-total">0</span></p>
+      <button id="clear-cart">Vaciar Carrito</button>
+      <button id="comprar">Comprar</button>
+
+  </div>
+
+
+
+
+
+
 
     <footer class="footer">
       
@@ -117,10 +135,20 @@
     
         </div>
       </footer>
+      <script src="https://kit.fontawesome.com/ec58002104.js" crossorigin="anonymous"></script>
+
+
       <script>
         document.addEventListener("DOMContentLoaded", function () {
           const productosContainer = document.querySelector('.container .product-cards');
-  
+          const cartItemsContainer = document.getElementById('cart-items');
+          const cartTotalElement = document.getElementById('cart-total');
+          const clearCartButton = document.getElementById('clear-cart');
+         
+          
+          
+          let cart = [];  // Agrega esta línea para declarar la variable cart
+      
           fetch('http://127.0.0.1:8000/products/catalog')
               .then(response => response.json())
               .then(data => {
@@ -140,14 +168,92 @@
                       `;
   
                       productosContainer.appendChild(productCard);
+
+
+                      
                   });
               })
               .catch(error => {
                   console.error('Error al obtener productos:', error);
               });
-      
 
               
+              
+               // Agrega un evento al botón "Agregar al Carrito"
+               productosContainer.addEventListener('click', function (event) {
+                if (event.target.classList.contains('add-to-cart')) {
+                    const productCard = event.target.closest('.product-card');
+                    const productName = productCard.querySelector('h3').innerText;
+                    const productPrice = parseFloat(productCard.querySelector('p').innerText.slice(1));
+        
+                    // Verifica si el producto ya está en el carrito
+                    const existingItem = cart.find(item => item.name === productName);
+        
+                    if (existingItem) {
+                        // Si el producto ya está en el carrito, incrementa la cantidad
+                        existingItem.quantity++;
+                    } else {
+                        // Si el producto no está en el carrito, agrégalo al carrito
+                        cart.push({
+                            name: productName,
+                            price: productPrice,
+                            quantity: 1
+                        });
+                    }
+        
+                    // Actualiza el contenido del carrito
+                    updateCart();
+                }
+            });
+             // Agrega un evento al botón "Vaciar Carrito"
+          clearCartButton.addEventListener('click', function () {
+            // Vacía el carrito y actualiza la visualización
+            cart = [];
+            updateCart();
+          });
+
+          const buyButton = document.getElementById('comprar');
+          buyButton.addEventListener('click', function () {
+              // Redirige a la página "Buy.html"
+              window.location.href = '/html/Buy.html'; // Ajusta la ruta según tu estructura de archivos
+          });
+          
+          
+
+          function updateCart() {
+            cartItemsContainer.innerHTML = '';
+            let total = 0;
+        
+            cart.forEach(item => {
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `
+                    <div>
+                        <img src="/img/${item.name}.jpg" alt="${item.name}">
+                        <span>${item.name} x ${item.quantity}</span>
+                        <span>$${(item.price * item.quantity).toFixed(3)}</span>
+                    </div>
+                `;
+                cartItemsContainer.appendChild(listItem);
+        
+                total += item.price * item.quantity;
+        
+                // Imprime la ruta de la imagen en la consola
+                console.log(`Ruta de la imagen para ${item.name}: /img/${item.name}.jpg`);
+            });
+        
+            // Actualiza el total del carrito
+            cartTotalElement.innerText = total.toFixed(3);
+        
+            // Guarda el carrito en el localStorage
+            localStorage.setItem('cartForBuyPage', JSON.stringify(cart));
+        }
+        
+        
+        
+        
+
+
+
             // Agrega un evento al formulario de búsqueda
             const searchForm = document.querySelector('form');
             searchForm.addEventListener('submit', function (event) {

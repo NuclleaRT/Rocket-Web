@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/CSS/Services.css">
-    <title>Servicios</title>
+    <link rel="stylesheet" href="/CSS/Buy.css">
+    <title>Carrito de Compra</title>
 </head>
 <body>
 
@@ -14,73 +14,30 @@
         </div>
         <nav>
             <ul class="nav-links">
-                <li><a href="/index.html">Inicio</a></li>
-                <li><a href="#">Servicios</a></li>
-                <li><a href="/html/Products.html">Productos</a></li>
-                <li><a href="/html/Impresion3D.html">Impresion 3D</a></li>               
-                <li><a href="/html/Contact.html">Contacto</a></li>                
+              <li><a href="/index.html">Inicio</a></li>
+              <li><a href="/html/Services.html">Servicios</a></li>
+              <li><a href="/html/Products.html">Productos</a></li>
+              <li><a href="/html/Impresion3D.html">Impresion 3D</a></li>               
+              <li><a href="/html/Contact.html">Contacto</a></li>               
             </ul>
         </nav>
         <a href="/html/Login.html" class="btn"><button>Ingresar</button></a>
         <div class="container-user">           
-            <i class="fa-solid fa-cart-shopping"></i>
             <div class="content-shopping-cart">
-                <span class="text">Carrito</span>
-                <span class="number">(0)</span>
-            </div>
+              
         </div>
     </header>
 
-    <div class="banner">
-        <h2>Servicios</h2>
-    </div>
 
-    <div class="container">
-       
-      
-        <div class="section">
-            <img src="/img/filamento.png" alt="Filamento">
-            <div class="section-text">
-                <h2>Impresión 3D con filamento</h2>
-                <p>¡Explora un mundo de posibilidades con la impresión 3D en nuestro sitio! Transformamos tus ideas en objetos reales y personalizados.</p>
-            </div>           
-        </div>
-
-        <div class="section inverted">
-            <img src="/img/resina.jpg" alt="Pintado">
-            <div class="section-text">
-                <h2>Impresión 3D con resina</h2>
-                <p>¡Explora un mundo de posibilidades 
-                    con la impresión 3D en nuestro sitio! 
-                    Transformamos tus ideas en objetos reales
-                    y personalizados.</p>
-            </div>            
-        </div>
-       
-
-        <div class="section">
-            <img src="/img/Modelado3D.jpeg" alt="Modelado3D">
-            <div class="section-text">
-                <h2>Modelado 3D</h2>
-                <p>¡Explora un mundo de posibilidades con 
-                    la impresión 3D en nuestro sitio! 
-                    Transformamos tus ideas en objetos
-                    reales y personalizados.</p>
+           
+            <div class="container">
+                <h1 class="heading-1">Detalle de la Compra</h1>
+                <ul id="cart-items-buy">
+                    <!-- Los elementos del carrito se agregarán aquí dinámicamente -->
+                </ul>
             </div>
-        </div>
-
-        <div class="section inverted">
-            <img src="/img/Login.jpeg" alt="Pintado">
-            <div class="section-text">
-                <h2>Pintado de figuras</h2>
-                <p>Pintamos la figura de tus sueños 
-                    con las mejores técnicas y pinturas 
-                    profesionales de modelismo, contáctanos 
-                    y háblanos de tu proyecto!</p>
-            </div>            
-        </div>
-    </div>
-
+        
+  
 
     <footer class="footer">
       
@@ -146,5 +103,45 @@
     
         </div>
       </footer>
+      <script src="https://kit.fontawesome.com/ec58002104.js" crossorigin="anonymous"></script>
+
+
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const cartItemsContainer = document.getElementById('cart-items-buy');
+
+            // Recupera los datos del carrito del localStorage
+            const cartData = JSON.parse(localStorage.getItem('cartForBuyPage')) || [];
+
+            // Muestra los elementos del carrito
+            cartData.forEach(item => {
+                const listItem = document.createElement('li');
+                listItem.className = 'cart-item';
+                listItem.innerHTML = `
+                    <img src="/img/${item.name}.jpg" alt="${item.name}">
+                    <span>${item.name} x ${item.quantity}</span>
+                    <span>$${(item.price * item.quantity).toFixed(3)}</span>
+                `;
+                cartItemsContainer.appendChild(listItem);
+            });
+
+            // Calcula el total de la compra
+            const total = cartData.reduce((acc, item) => acc + item.price * item.quantity, 0);
+
+            // Muestra el total de la compra
+            const totalElement = document.createElement('p');
+            totalElement.className = 'total';
+            totalElement.innerHTML = `Total: $${total.toFixed(3)}`;
+            cartItemsContainer.appendChild(totalElement);
+
+            // Limpia el carrito después de mostrar los elementos
+            localStorage.removeItem('cartForBuyPage');
+        });
+    </script>
+    
+    
+    
+    
+    
 </body>
 </html>
