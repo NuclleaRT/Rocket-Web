@@ -100,7 +100,34 @@ body {
     margin-top: 10px;
 }
 
+.total {
+    font-weight: bold;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
+.total p {
+    margin: 0;
+}
+
+.btn-comprar {
+    background-color: blueviolet;
+    width: 150px;
+    font-size: 1.2rem;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+.btn-comprar:hover{
+    background-color: #4CAF50;
+    transform: scale(1.1);
+}
 
 /* FOOTER */
 

@@ -34,6 +34,8 @@
                 <h1 class="heading-1">Detalle de la Compra</h1>
                 <ul id="cart-items-buy">
                     <!-- Los elementos del carrito se agregarán aquí dinámicamente -->
+                    <button class="btn-comprar" onclick="realizarCompra()">Comprar</button>
+
                 </ul>
             </div>
         
@@ -106,38 +108,92 @@
       <script src="https://kit.fontawesome.com/ec58002104.js" crossorigin="anonymous"></script>
 
 
-      <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const cartItemsContainer = document.getElementById('cart-items-buy');
+   <!-- ... (código anterior) ... -->
 
-            // Recupera los datos del carrito del localStorage
-            const cartData = JSON.parse(localStorage.getItem('cartForBuyPage')) || [];
+   <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const cartItemsContainer = document.getElementById('cart-items-buy');
 
-            // Muestra los elementos del carrito
-            cartData.forEach(item => {
-                const listItem = document.createElement('li');
-                listItem.className = 'cart-item';
-                listItem.innerHTML = `
-                    <img src="/img/${item.name}.jpg" alt="${item.name}">
-                    <span>${item.name} x ${item.quantity}</span>
-                    <span>$${(item.price * item.quantity).toFixed(3)}</span>
-                `;
-                cartItemsContainer.appendChild(listItem);
-            });
+        // Recupera los datos del carrito del localStorage
+        const cartData = JSON.parse(localStorage.getItem('cartForBuyPage')) || [];
 
-            // Calcula el total de la compra
-            const total = cartData.reduce((acc, item) => acc + item.price * item.quantity, 0);
-
-            // Muestra el total de la compra
-            const totalElement = document.createElement('p');
-            totalElement.className = 'total';
-            totalElement.innerHTML = `Total: $${total.toFixed(3)}`;
-            cartItemsContainer.appendChild(totalElement);
-
-            // Limpia el carrito después de mostrar los elementos
-            localStorage.removeItem('cartForBuyPage');
+        // Muestra los elementos del carrito
+        cartData.forEach(item => {
+            const listItem = document.createElement('li');
+            listItem.className = 'cart-item';
+            listItem.innerHTML = `
+                <img src="/img/${item.name}.jpg" alt="${item.name}">
+                <span>${item.name} x ${item.quantity}</span>
+                <span>$${(item.price * item.quantity).toFixed(3)}</span>
+            `;
+            cartItemsContainer.appendChild(listItem);
         });
-    </script>
+
+        // Calcula el total de la compra
+        const total = cartData.reduce((acc, item) => acc + item.price * item.quantity, 0);
+
+        // Muestra el total de la compra
+        const totalElement = document.createElement('p');
+        totalElement.className = 'total';
+        totalElement.innerHTML = `Total: $${total.toFixed(3)}
+            <button class="btn-comprar" onclick="realizarCompra()">Comprar</button>
+        `;
+        cartItemsContainer.appendChild(totalElement);
+
+        // Limpia el carrito después de mostrar los elementos
+        localStorage.removeItem('cartForBuyPage');
+    });
+    async function realizarCompra() {
+        try {
+            // Obtener datos del carrito
+            const cartData = JSON.parse(localStorage.getItem('cartForBuyPage')) || [];
+    
+            // Crear estructura de datos para la solicitud a la API
+            const compraRequest = {
+                detalles: cartData.map(item => ({
+                    ped_id: item.ped_id,
+                    pro_id: item.pro_id,
+                    nombre_producto: item.name,
+                    cantidad: item.quantity,
+                    precio_unitario: item.price
+                }))
+            };
+    
+            // Realizar la petición POST a la API
+            const response = await fetch('http://127.0.0.1:8000/realizar_compra/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(compraRequest)
+            });
+    
+            if (response.ok) {
+                alert('Compra realizada exitosamente');
+                // Puedes redirigir al usuario a otra página o realizar otras acciones necesarias
+            } else {
+                alert('Error al realizar la compra');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Error al realizar la compra');
+        }
+    }
+    
+
+    // Función para calcular el total (puedes implementar esto según tu lógica)
+    function calcularTotal() {
+        // Implementa la lógica para calcular el total
+        // Puedes recorrer el carrito y sumar los precios de cada producto
+        // y aplicar descuentos, impuestos, etc.
+        // Por ahora, simplemente sumaremos los precios unitarios
+        const cartData = JSON.parse(localStorage.getItem('cartForBuyPage')) || [];
+        return cartData.reduce((total, item) => total + item.price * item.quantity, 0);
+    }
+</script>
+
+
+
     
     
     
