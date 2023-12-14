@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/CSS/Style.css">
+    <title>Rocket 3D</title>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="/img/Rocket.png" alt="Rocket3D">
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#">Inicio</a></li>
+                <li><a href="/html/Services.html">Servicios</a></li>
+                <li><a href="/html/Products.html">Productos</a></li>
+                <li><a href="/html/Impresion3D.html">Impresion 3D</a></li>               
+                <li><a href="/html/Contact.html">Contacto</a></li>               
+            </ul>
+        </nav>
+        <a href="/html/Login.html" class="btn"><button>Iniciar Sesion</button></a>
+        <div class="container-user">           
+            <a id="profileIcon" href="#" onclick="redirectToProfile()">
+                <i class="fas fa-solid fa-user"></i>
+            </a>
+            
+            <div id="loginMessage">Por favor, inicia sesión para acceder al perfil.</div>
+
+        </div>
+
+    </header>
+  <section class="banner">
+    <div class="content-banner">
+        <p>Impresión 3D</p>
+        <h2>Explora, crea e imprime con  <br>Rocket 3D</h2>
+        <a href="#">Diseña tu pedido</a>
+    </div>
+  </section>
+
+  <main class="main-content">
+    <section class="container top-categories">
+        <h1 class="heading-1">Categorias</h1>
+        <div class="container-categories">
+            <div class="card-category category-anime">
+                <p>Anime</p>
+                <span>Ver más</span>   
+            </div>
+            <div class="card-category category-hogar">
+                <p>Hogar</p>
+                <span>Ver más</span>   
+            </div>
+            <div class="card-category category-miniaturas">
+                <p>Miniaturas</p>
+                <span>Ver más</span>   
+            </div>
+        </div>
+    </section>    
+    <section class="container top-products">
+        <h1 class="heading-1">Productos Recomendados</h1>
+       
+        <div class="container-products">
+            <!-- Producto 1-->
+            <div class="card-products">
+                <div class="container-img">
+                    <img src="/img/mandalorian.jpg" alt="mandalorian">
+                    <div class="content-card-product">
+                   
+                        <h3>Mandalorian</h3>
+                        <p>$35.000</p>
+                                          
+                    </div>   
+                       
+                    <div class="btn-cart">                    
+                        <a href="#">Agregar al carro </a>                        
+                    </div>         
+                </div>
+                
+            </div>
+           
+    
+               
+    </section>
+
+    <section class="container top-categories">
+        <h1 class="heading-1">Servicios</h1>
+        <div class="container-categories">
+            <div class="card-category category-anime">
+                <p>Impresión en Resina</p>
+                <a href="/html/Services.html"><span>Ver más</span>  </a>    
+            </div>
+            <div class="card-category category-hogar">
+                <p>Impresión en filamento</p>
+                <a href="/html/Services.html"><span>Ver más</span>  </a>    
+            </div>
+            <div class="card-category category-miniaturas">
+                <p>Modelado 3D</p>
+                <a href="/html/Services.html"><span>Ver más</span>  </a>   
+            </div>
+        </div>
+    </section>  
+
+    <section class="gallery">
+        
+    </section>
+
+  </main>
+  <footer class="footer">
+      
+  
+    <div class="container container-footer">
+      <div class="menu-footer">
+        <div class="contact-info">
+          <p class="title-footer">Informacion de contacto</p>
+          <ul>
+              <li>Whatshapp: +596 78945645</li>
+              <li>Email: Rocket.3D@gmail.com</li>            
+          </ul>
+          <div class="social-icons">
+              <span>
+                <span class="facebook"><i class="fa-brands fa-facebook-f"></i></span>
+                <span class="instagram"><i class="fa-brands fa-instagram"></i></span>
+                <span class="tiktok"><i class="fa-brands fa-tiktok"></i></span>              
+              </span>  
+          </div>
+        </div>
+
+        <div class="information">
+            <p class="title-footer">Información</p>
+            <ul>
+              <li><a href="#">Acerca de Nosotros</a></li>
+              <li><a href="#">Politícas de privacidad</a></li>
+              <li><a href="#">Términos y Condiciones</a></li>
+              <li><a href="#">Contactános</a></li>
+            </ul>
+        </div>
+
+        <div class="my-account">
+          <p class="title-footer">Mi Cuenta</p>
+
+          <ul>
+            <li><a href="#">Mi Cuenta</a></li>
+            <li><a href="#">Historial de pedido</a></li>
+            <li><a href="#">Lista de Deseos</a></li>
+            <li><a href="#">Reembolso</a></li>
+          </ul>
+        </div>
+
+        <div class="newsletter">
+          <p class="title-footer">Boletín Informativo</p>
+
+          <div class="content">
+              <p>
+                Suscribete a nuestros boletines ahora y mantente al dia 
+                con nuevas colecciones y ofertas exclusivas.
+              </p>
+              <input type="email" placeholder="Ingresa tu correo aqui...">
+              <button>Suscríbete</button> 
+          </div>
+        </div>
+      </div>
+
+      <div class="copyright">
+          <p>
+            Desarrollado por Cristobal Ruiz para el mundo &copy; 2023
+          </p>
+          <img src="img/Payment_Options.png" alt="Payment_Options">
+      </div>
+
+    </div>
+  </footer>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Verificar si el usuario ha iniciado sesión
+        const usuarioIniciadoSesion = localStorage.getItem('usuarioIniciadoSesion');
+    
+        if (usuarioIniciadoSesion === '1') {
+            // El usuario ha iniciado sesión, permitir acceso a Profile.html
+            const profileIcon = document.getElementById('profileIcon');
+
+            // Verificar si ya se ha agregado el event listener para evitar bucles de redirección
+            if (!profileIcon.hasAttribute('data-listener-added')) {
+                profileIcon.addEventListener('click', redirectToProfile);
+                profileIcon.setAttribute('data-listener-added', 'true');
+            }
+            // También puedes mostrar un mensaje de bienvenida u otros elementos específicos para usuarios autenticados
+        } else {
+            // El usuario no ha iniciado sesión, redirigir a la página de inicio
+            if (!window.location.pathname.includes('/index.html')) {
+                window.location.href = '/index.html';
+            }
+        }
+    });
+    
+    function redirectToProfile() {
+        // Verifica nuevamente si el usuario ha iniciado sesión antes de redirigir
+        const usuarioIniciadoSesion = localStorage.getItem('usuarioIniciadoSesion');
+
+        if (usuarioIniciadoSesion === '1') {
+            // El usuario ha iniciado sesión, redirigir a la página de perfil
+            window.location.href = '/html/Profile.html';
+        } else {
+            // El usuario no ha iniciado sesión, mostrar un mensaje o realizar alguna acción
+            console.log('Por favor, inicia sesión para acceder al perfil.');
+        }
+    }
+</script>
+
+
+
+
+
+
+  <script src="https://kit.fontawesome.com/ec58002104.js" crossorigin="anonymous"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        fetch('http://127.0.0.1:8000/productos-recomendados/')
+            .then(response => response.json())
+            .then(data => {
+                console.log('Respuesta de la API (productos recomendados):', data);
+
+                const productosContainer = document.querySelector('.container-products');
+
+                data.forEach(producto => {
+                    const card = document.createElement('div');
+                    card.className = 'card-products';
+
+                    card.innerHTML = `
+                         <div class="container-img">
+                            <img src="/img/${producto.nombre}.jpg" alt="${producto.nombre}">
+                            <div class="content-card-product">
+                                <h3>${producto.nombre}</h3>
+                                <p>$${producto.precio}</p>
+                            </div>
+                            <div class="btn-cart">
+                                <a href="#">Agregar al carro</a>
+                            </div>
+                        </div>
+                    `;
+
+                    productosContainer.appendChild(card);
+                });
+            })
+            .catch(error => {
+                console.error('Error al obtener productos recomendados:', error);
+            });
+    });
+</script>
+
+</body>
+</html>

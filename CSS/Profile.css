@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,800&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Nunito Sans', sans-serif;
+    overflow-y: auto; /* Permitir el desplazamiento vertical */
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+    background-color: #fff;
+}
+
+.left-section {
+    flex: 1;
+    padding: 20px;
+    background-color: #fff;
+    border-right: 1px solid #ddd; /* Línea vertical gris */
+    overflow-y: auto; /* Permitir el desplazamiento vertical en la sección izquierda */
+    box-sizing: border-box; /* Asegurar que el padding y el borde no afecten la altura total */
+}
+
+@media (min-width: 768px) {
+    .left-section {
+        flex: 0.5; /* En pantallas grandes, la sección izquierda es más pequeña */
+    }
+}
+
+.right-section {
+    flex: 2;
+    padding: 20px;
+}
+
+.label-with-star {
+    color: blueviolet; /* Color por defecto del texto del label */
+}
+
+.label-with-star::after {
+    content: "*";
+    color: red; /* Color rojo para el símbolo "*" */
+}
+
+.user-info {
+    text-align: center;
+    margin-bottom: 20px; /* Añadido margen inferior para centrar el círculo */
+}
+
+.profile-circle {
+    width: 120px; /* Mayor tamaño del círculo */
+    height: 120px;
+    border-radius: 50%;
+    background-color: #000;
+    color: #fff;
+    font-size: 36px; /* Mayor tamaño de la letra */
+    line-height: 120px;
+    margin: 0 auto; /* Centrar el círculo */
+    font-weight: bold; /* Estilo negrita */
+}
+
+.nav-links {
+    margin-top: 20px;
+}
+
+.nav-links a {
+    display: block;
+    color: #fff;
+    background-color: blueviolet;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+.nav-links a.selected {
+    background-color: orange;
+}
+
+.divider {
+    border: 1px solid orange;
+    margin: 5px 0;
+}
+
+.right-section {
+    flex: 2;
+    padding: 20px;
+}
+
+h2 {
+    color: blueviolet;
+    text-align: center; /* Centrar el H2 */
+}
+
+.rounded-table {
+    width: 100%;   
+    border-radius: 10px;
+    margin-top: 20px;
+    box-shadow: 10px 10px 20px #ddd; /* Sombra más pronunciada */
+    border: 1px solid #ddd; /* Bordes grises de la tabla */
+}
+
+.rounded-table th, .rounded-table td {
+    padding: 1rem;
+    padding-left: 10%;
+    text-align: left;
+    color: blueviolet; /* Color de las letras de la fila de la tabla */
+}
+
+.rounded-table th {
+    background-color: white;
+    color: blueviolet;
+}
+
+.back-to-web {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: blueviolet;
+    text-decoration: none;
+}
+
+.login-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+}
+
+.logo {
+    height: 100px;
+    width: auto;
+    transition: all 0.3s;
+}
+.logo:hover{
+    transform: scale(1.2);
+}
+
+form {
+    width: 300px;
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin: 10px 0;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border-color: blueviolet;
+}
+
+.left{
+    text-align: left;
+}
+
+.btn {
+    font-weight: 700;    
+    font-size: 1rem;
+    color: white;
+    padding: 9px 25px;
+    background-color: orange;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    text-decoration: none;
+}

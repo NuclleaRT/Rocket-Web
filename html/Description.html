@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/CSS/Description.css">
+    <title>Descripcion Producto</title>
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo">
+            <img src="/img/Rocket.png" alt="Rocket3D">
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="/index.html">Inicio</a></li>
+                <li><a href="/html/Services.html">Servicios</a></li>
+                <li><a href="/html/Products.html">Productos</a></li>
+                <li><a href="/html/Impresion3D.html">Impresion 3D</a></li>
+                <li><a href="/html/Contact.html">Contacto</a></li>
+            </ul>
+        </nav>
+        <a href="/html/Login.html" class="btn"><button>Ingresar</button></a>
+        <div class="container-user">
+            <div class="two columns u-pull-right">
+                <ul>
+                    <li class="submenu">
+                        <i class="fa-solid fa-cart-shopping" id="img-carrito"></i>
+                            <!-- <img src="/img/cart.png" id="img-carrito"> -->
+                            <div id="carrito">
+
+                                    <table id="lista-carrito" >
+                                        <thead>
+                                            <tr>
+                                                <th>Imagen</th>
+                                                <th>Nombre</th>
+                                                <th>Precio</th>
+                                                <th>Cantidad</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                    <div class="vaciar-carrito">
+                                        <a href="#" id="vaciar-carrito" >Vaciar Carrito</a>
+                                    </div>  
+                            </div>
+                    </li>
+                </ul>
+            </div>
+            </div>
+        </div>
+    </header>
+
+
+    <div class="banner" >
+        <h2>Productos </h2>
+
+
+    </div>
+
+    <h1 class="heading-1" id="product-name"></h1>
+
+    <section class="gallery">
+        <img src="" alt="" class="gallery-img-1">
+
+    </section>
+    <div class="btn-3D">
+        <button class="gallery-button">Visualizar en 3D</button>
+    </div>
+
+    <!-- Modal -->
+
+<div class="modal" id="myModal">
+    <div class="modal-content">
+        <span class="close" id="closeModal">&times;</span>
+        <div class="div-prueba centered-content">
+            <iframe src="https://webviewer.appar.io/" style="border:0px #ffffff none;" name="appar"
+                    scrolling="no" frameborder="0" allow="camera" marginheight="0px" marginwidth="0px" height="500px"
+                    width="600px" allowfullscreen>
+            </iframe>
+
+        </div>
+
+    </div>
+</div>
+
+
+<!-- Detalles del Producto fuera de la sección de galería -->
+<div class="product-details">
+    <div class="product-description">
+        <!-- Contenido del detalle del producto -->
+        <h2>Descripción del Producto:</h2>
+        <p id="product-description">aqui va la descripcion del prducto</p>
+
+    </div>
+    <div class="product-options">
+        <select  class="search-input">
+            <option value="small">Pequeño (15 cm) - $35.000</option>
+            <option value="medium">Mediano (20 cm) - $45.000</option>
+            <option value="large">Grande (25 cm) - $55.000</option>
+        </select>
+        <p>15 días de espera luego de realizar el pedido</p>
+        <p>Envíos a todo Chile</p>
+        <button class="add-to-cart-button agregar-carrito">Agregar al Carrito</button>
+    </div>
+</div>
+
+
+    <section class="container top-categories">
+        <h1 class="heading-1">Productos Recomendados</h1>
+        <div class="product-cards">
+
+        </div>
+    </section>
+
+
+    <footer class="footer">
+
+
+        <div class="container container-footer">
+          <div class="menu-footer">
+            <div class="contact-info">
+              <p class="title-footer">Informacion de contacto</p>
+              <ul>
+                  <li>Whatshapp: +596 78945645</li>
+                  <li>Email: Rocket.3D@gmail.com</li>
+              </ul>
+              <div class="social-icons">
+                  <span>
+                    <span class="facebook"><i class="fa-brands fa-facebook-f"></i></span>
+                    <span class="instagram"><i class="fa-brands fa-instagram"></i></span>
+                    <span class="tiktok"><i class="fa-brands fa-tiktok"></i></span>
+                  </span>
+              </div>
+            </div>
+
+
+
+            <div class="my-account">
+              <p class="title-footer">Mi Cuenta</p>
+
+              <ul>
+                <li><a href="#">Mi Cuenta</a></li>
+                <li><a href="#">Historial de pedido</a></li>
+                <li><a href="#">Lista de Deseos</a></li>
+                <li><a href="#">Reembolso</a></li>
+              </ul>
+            </div>
+
+            <div class="newsletter">
+              <p class="title-footer">Boletín Informativo</p>
+
+              <div class="content">
+                  <p>
+                    Suscribete a nuestros boletines ahora y mantente al dia
+                    con nuevas colecciones y ofertas exclusivas.
+                  </p>
+                  <input type="email" placeholder="Ingresa tu correo aqui...">
+                  <button>Suscríbete</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="copyright">
+              <p>
+                Desarrollado por Cristobal Ruiz para el mundo &copy; 2023
+              </p>
+              <img src="/img/Payment_Options.png" alt="Payment_Options">
+          </div>
+
+        </div>
+      </footer>
+      <script src="https://kit.fontawesome.com/ec58002104.js" crossorigin="anonymous"></script>
+      <script>
+        // Obtener elementos del DOM
+        var modal = document.getElementById("myModal");
+        var btn = document.querySelector(".gallery-button");
+        var span = document.getElementById("closeModal");
+
+        // Función para abrir el modal
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        // Función para cerrar el modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // Cerrar modal al hacer clic fuera del contenido
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = urlParams.get('id');
+            const productName = document.getElementById('product-name');
+            const productDescription = document.getElementById('product-description');
+            const iframeElement = document.querySelector('.div-prueba iframe');
+            const modal = document.querySelector('.modal');
+               // Selecciona el elemento de la imagen por su id
+            const productImage = document.querySelector('.gallery-img-1');
+
+            fetch(`http://127.0.0.1:8000/products/details/${productId}`)
+                .then(response => response.json())
+                .then(data => {
+                    productName.textContent = data.nombre;
+                    productDescription.textContent = data.descripcion;
+                    const imageUrl = `/img/${data.nombre}.jpg`;
+                    // Actualiza la imagen del producto
+                    productImage.src = imageUrl;
+
+                    iframeElement.src = `https://webviewer.appar.io/${data.vista3D}`;
+
+                    productName.addEventListener('click', function () {
+                        modal.style.display = 'block';
+                    });
+
+                    modal.querySelector('.close').addEventListener('click', function () {
+                        modal.style.display = 'none';
+                    });
+
+                    window.addEventListener('click', function (event) {
+                        if (event.target === modal) {
+                            modal.style.display = 'none';
+                        }
+                    });
+                })
+                .catch(error => {
+                    console.error('Error al obtener detalles del producto:', error);
+                });
+
+
+
+
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch('http://127.0.0.1:8000/productos-recomendados/')
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Respuesta de la API (productos recomendados):', data);
+
+                    const productosContainer = document.querySelector('.product-cards');
+
+                    data.forEach(producto => {
+                        const card = document.createElement('div');
+                        card.className = 'card-products';
+
+                        card.innerHTML = `
+                                <div class="product-card">
+                                <img src="/img/${producto.nombre}.jpg" alt="${producto.nombre}">
+                                <div class="content-card-product">
+                                    <h3>${producto.nombre}</h3>
+                                    <p>$${producto.precio.toFixed(3)}</p>
+                                </div>
+                                <div class="add-to-cart">
+                                    <a href="#">Agregar al carro</a>
+                                </div>
+                            </div>
+
+                        `;
+
+                        productosContainer.appendChild(card);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error al obtener productos recomendados:', error);
+                });
+        });
+    </script>
+    <script>
+  
+
+   
+        
+    </script>
+
+</body>
+</html>

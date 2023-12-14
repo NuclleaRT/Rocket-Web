@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/CSS/Profile.css">
+    <title>Perfil de Usuario</title>
+</head>
+<body>
+    <div class="container">
+        <div class="left-section">
+            <div class="user-info">
+                <div class="profile-circle">U</div>
+                <h3>Nombre de Usuario</h3>
+            </div>
+            <div class="nav-links">
+                <a href="#" class="selected">Historial de pedidos</a>
+                <hr class="divider">
+                <a href="/html/List.html">Lista de deseos</a>
+                <hr class="divider">
+                <a href="/html/Recover2.html">Cambiar contraseña</a>
+                <hr class="divider">
+                <a href="/html/Refund.html">Reembolso</a>
+            </div>
+        </div>
+        <div class="right-section">
+            <h2>Historial de pedidos</h2>
+            <table class="rounded-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Fecha de Compra</th>
+                        <th>Estado</th>
+                        <th>Fecha de Envío</th>
+                        <th>Monto Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Aquí irían las filas de la tabla con datos reales -->
+                </tbody>
+            </table>
+            <a href="/index.html" class="back-to-web"><i class="fa-solid fa-arrow-left"></i> Volver a la Web</a>
+        </div>
+    </div>
+    <script src="https://kit.fontawesome.com/ec58002104.js" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Establecer el indicador de inicio de sesión en localStorage
+            localStorage.setItem('usuarioIniciadoSesion', 'true');
+        });
+    
+        function cerrarSesion() {
+            // Eliminar el indicador de inicio de sesión de localStorage
+            localStorage.removeItem('usuarioIniciadoSesion');
+    
+            // Redirigir al usuario a la página de inicio
+            window.location.replace('/index.html');
+        }
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,460 @@
+body {
+    margin: 0;
+    font-family: 'Nunito Sans', sans-serif;
+    overflow-y: auto; /* Permite el desplazamiento vertical */
+}
+
+.header{
+    background-color: blueviolet;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 85px;
+    padding: 5px 10%;    
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px; /* Añadido espacio alrededor del contenido */
+    box-sizing: border-box; /* Evita que el padding afecte el ancho total */
+}
+
+.header .logo{
+    cursor: pointer;
+}
+
+.header .logo img{
+    height: 70px;
+    width: auto;
+    transition: all 0.3s;
+}
+
+.header .logo img:hover{
+    transform: scale(1.2);
+}
+
+.header .nav-links li{
+    display: inline-block;
+    padding: 0 20px;
+}
+
+.header .nav-links li:hover{
+    transform: scale(1.1);
+}
+
+.header .nav-links a{
+    font-size: 700;
+    color: white;
+    text-decoration: none;
+}
+
+.header .nav-links a:hover{
+    color: orange;
+}
+
+.header .btn button{
+    font-weight: 700;
+    color: white;
+    padding: 9px 25px;
+    background-color: orange;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+.header .btn button:hover{
+    background-color: white;
+    color: orange;
+    transform: scale(1.1);
+}
+
+.section {
+    
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 0;        
+    background-size: cover;
+    padding: 20px;
+    color: white; /* Color del texto */
+}
+
+
+
+.section2{
+    height: 30vh;
+    background-size: cover;
+    font-size: 2rem;    
+    background-image: url(/img/wave.svg);
+}
+
+.section3{
+    height: 30vh;
+    background-size: cover;
+    font-size: 2rem;
+    
+    background-image: url(/img/wave_bottom2.svg);
+}
+
+
+.section img {
+    width: 50%;
+    height: 50%;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    margin-right: 10px;
+}
+
+.section.inverted {
+    flex-direction: row-reverse;
+}
+
+.section-text {
+    flex: 1;
+}
+
+.section-text h2{
+    color: blueviolet;
+}
+.section-text p {
+    color: black; /* Color del texto */
+}
+
+
+/* Carrito de compras */
+
+.cart {
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    
+}
+
+.cart ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.cart li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+
+#cart-items li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+#cart-items li img {
+    width: 50px; /* Ajusta el ancho según sea necesario */
+    height: auto; /* Mantiene la proporción */
+    margin-right: 10px;
+}
+
+#cart-items li span {
+    flex-grow: 1;
+    margin-right: 10px;
+}
+
+#cart-total {
+    font-weight: bold;
+}
+
+#clear-cart{
+    background-color: blueviolet;
+    color: white;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    transition: all 0.3s ease 0s;
+}
+#clear-cart:hover{
+    transform: scale(1.2);
+    background-color: #8a2be2;
+    
+}
+
+
+/* BANNER */
+
+.banner{
+    padding-top: 2rem;
+   height: 50vh;   
+   background-image: linear-gradient(
+        rgba(133, 97, 121, 0.5),
+        rgba(133, 97, 121, 0.5)), url(/img/Tienda.jpeg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+
+
+.banner h2{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin-top: 7%;   
+    color: white;
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.banner {
+    text-align: center;
+}
+
+.search-form {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    border-color: blueviolet;
+    color: #8a2be2;
+}
+.search-input {
+    padding: 10px;
+    padding-left: 30px; /* Ajusta según sea necesario */
+    font-size: 16px; /* Ajusta según sea necesario */
+    color: blueviolet;
+    border: 1px solid blueviolet;
+    border-radius: 5px;.search-input {
+    padding-left: 30px; /* Ajusta el espacio a la izquierda según sea necesario */
+}
+}
+.search-container {
+    position: relative;
+}
+
+.search-container i {
+    position: absolute;
+    top: 50%;
+    left: 10px; /* Puedes ajustar la posición según sea necesario */
+    transform: translateY(-50%);
+    color: blueviolet;
+}
+
+.heading-1{
+    margin-top: 100px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 3rem;
+    color: blueviolet;
+}
+
+.product-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.product-card {
+    width: 200px;
+    margin: 10px;
+    padding: 15px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.product-card img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.product-card p {
+    color: orange;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.add-to-cart {
+    background-color: blueviolet;
+    color: white;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.add-to-cart:hover {
+    background-color: #8a2be2;
+}
+
+/* FOOTER */
+
+.footer{
+    background-color: blueviolet;
+
+}
+
+.container-footer{
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    padding: 3rem;
+    background-color: blueviolet;
+}
+
+.menu-footer{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr)30rem;
+    gap: 3rem;
+    justify-items: center;
+}
+
+.title-footer{
+    font-weight: 600;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+}
+
+.contact-info, .information, .my-account, .newsletter{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+
+.contact-info ul, .information ul, .my-account ul{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+
+
+
+.contact-info ul li, .information ul li, .my-account ul li{
+    list-style: none;
+    color: white;
+    font-size: 1.4rem;
+    font-weight: 300;
+}
+
+.information ul li a, .my-account ul li a{
+    text-decoration: none;
+    color: white;
+    font-weight: 300;
+}   
+
+.information ul li a:hover, .my-account ul li a:hover{
+    color: orange;
+}   
+
+.social-icons{
+    display: flex;
+    gap: 1.5rem;
+}
+
+.social-icons span{
+    border-radius: 50%;
+    width: 3rem;
+    /* height: 3rem; */
+    margin: 1px 20%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-icons span i{
+    color: white;
+    font-size: 1.2rem;
+}
+
+.facebook{
+    background-color: #3b5998;
+}
+
+.instagram{
+    background: linear-gradient(
+        #405de6,
+        #833ab4,
+        #c13584,
+        #e1306c,
+        #fd1d1d,
+        #f56040,
+        #fcaf45
+    )
+}
+
+.tiktok{
+    background-color: #000000;
+}
+
+.content p{
+    font-size: 1.4rem;
+    color: white;
+    font-weight: 300;
+}
+
+.content input{
+    outline: none;
+    background:none;
+    border: none;
+    border-bottom: 2px solid;
+    cursor: pointer;
+    padding: 0.5rem 0 1.2rem;
+    color: orange;
+    display: block;
+    margin-bottom: 3rem;
+    margin-top: 2rem;
+    width: 100%;
+    font-family: inherit;
+}
+
+.content input::-webkit-input-placeholder{
+    color: orange;
+}
+
+.content button{
+    border: none;
+    background-color: orange;
+    text-transform: uppercase;
+    padding: 1rem 3rem;
+    border-radius: 2rem;
+    font-size: 1.4rem;
+    font-family: inherit;
+    cursor: pointer;
+    font-weight: 600;
+    color: white;
+    transition: all 0.3s;
+}
+
+.content button:hover{
+    background-color: white ;
+    color: orange;
+    transform: scale(1.2);
+}
+
+.copyright{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 2rem;
+
+    border-top: 1px solid orange;
+}
+
+.copyright p{
+    font-weight: 500;
+    font-size: 1.6rem;
+}

@@ -71,6 +71,42 @@ body{
     transform: scale(1.1);
 }
 
+/* PERFIL USUARIO */
+#profileIcon {
+    cursor: pointer;
+}
+
+#loginMessage {
+    display: none;
+    color: red;
+}
+
+
+
+.container-user{
+    display: flex;
+    gap: 1rem;
+    cursor: pointer;
+}
+
+.container-user .fa-user{
+    font-size: 2.5rem;
+    color: white;
+    padding-right: 2.5rem;
+    border-right: 1px solid orange;
+}
+
+.container-user .fa-cart-shopping{
+    font-size: 2.5rem;
+    color: white;
+    padding-left: 1rem;
+}
+
+.content-shopping-cart{
+    display: flex;
+    flex-direction: column;
+}
+
 .heading-1{
     text-align: center;
     font-weight: 700;
@@ -212,34 +248,7 @@ body{
     margin-bottom: 3rem;
 }
 
-.container-options{
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin-bottom: 1rem;
-}
 
-.container-options span{
-    color: white;
-    background-color: orange;
-    padding: .7rem 3rem;
-    font-size: 1.4rem;
-    text-transform: capitalize;
-    border-radius: 2rem;
-    cursor: pointer;
-}
-
-.container-options span:hover{
-    background-color: white;
-    color: orange;
-    font-weight: 700;
-}
-
-.container-options span.active{
-    background-color: white;
-    color: orange;
-    font-weight: 700;
-}
 
 
 /* products */
@@ -248,10 +257,10 @@ body{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(20rem,1fr));
     gap: 3rem;
+   
 }
 
-.card-products{
-    background-color: #f6f1ff;
+.card-products{    
     padding: 2rem 3rem;
     border-radius:.5rem;
     cursor: pointer;
@@ -260,6 +269,8 @@ body{
 
 .container-img{
     position: relative;
+    border: rgb(197, 197, 197) 2px solid;
+    border-radius: .5rem;
 }
 
 .container-img img{
@@ -285,11 +296,19 @@ body{
     color: orange;
 }
 .content-card-product h3{
-    grid-row: 2/3;
+    grid-row: 1/3;
     grid-column: 1/-1;
     font-weight: 700;
     font-size: 1.6rem;
-    color: blueviolet ;
+    color: black ;    
+    cursor: pointer;
+}
+.content-card-product p{
+    grid-row: 3/3;
+    grid-column: 1/-1;
+    font-weight: 700;
+    font-size: 1.6rem;
+    color: orange ;
     margin-bottom: 1rem;
     cursor: pointer;
 }
@@ -318,6 +337,42 @@ transition: all .4s ease;
 .add-cart i{ 
     font-size: 1.5rem;
     
+}
+
+.btn-cart{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin-bottom: .5rem;
+    
+}
+.btn-cart a{
+    font-weight: 700;    
+    color: white;
+    padding: 9px 25px;
+    background-color: blueviolet;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    text-decoration: none;
+    
+}
+.price {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    padding-bottom: 0.1rem;  
+}
+
+.price p{
+    font-weight: 700;    
+    color: orange;
+    padding: 9px 25px;    
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;        
 }
 
 

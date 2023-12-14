@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/CSS/Login.css">
+    <title>Login</title>
+</head>
+<body>
+    <div class="container">
+        <div class="background-image"></div>
+        <a href="/index.html" class="back"><i class="fa-solid fa-arrow-left"></i> Volver a la Web</a>
+
+        <div class="login-container">
+            <img src="/img/Rocket.png" alt="" class="logo">
+            <h2>Iniciar sesión</h2>
+            <form onsubmit="loginUser(event)">
+                <label class="left" for="email">Correo electrónico</label>
+                <input type="email" id="email" name="email" required>
+
+                <label class="left" for="password">Contraseña</label>
+                <input type="password" id="password" name="password" required>
+
+                <label class="pass" for="password"><a href="/html/Recover_Password.html" class="recover">¿Olvidaste tu contraseña?</a></label>
+                <button class="btn" type="submit">Ingresar</button>
+
+                <label for="password">¿No tienes cuenta?<a href="/html/Register.html" class="registrar"> Registrate</a></label>
+            </form>
+        </div>
+    </div>
+    <script src="https://kit.fontawesome.com/ec58002104.js" crossorigin="anonymous"></script>
+    <script>
+        function loginUser(event) {
+            event.preventDefault();
+    
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+    
+            const loginData = {
+                correo: email,
+                clave: password
+            };
+    
+            fetch('http://127.0.0.1:8000/login/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(loginData),
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Respuesta de la API:', data);
+    
+                if (data.mensaje === "Inicio de sesión exitoso") {
+                    // Almacenar un indicador de inicio de sesión en localStorage
+                    localStorage.setItem('usuarioIniciadoSesion', '1');
+    
+                    console.log('Redirigiendo a la página de inicio...');
+                    window.location.replace('/index.html');
+                } else {
+                    // Manejar otras respuestas o mostrar mensajes de error aquí
+                    console.error('Error en el inicio de sesión:', data.detail);
+                }
+            })
+            .catch(error => {
+                console.error('Error al realizar la solicitud POST para iniciar sesión:', error);
+            });
+        }
+    </script>
+    
+</body>
+</html>

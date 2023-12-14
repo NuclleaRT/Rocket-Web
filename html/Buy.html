@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/CSS/Buy.css">
+    <title>Carrito de Compra</title>
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo">
+            <img src="/img/Rocket.png" alt="Rocket3D">
+        </div>
+        <nav>
+            <ul class="nav-links">
+              <li><a href="/index.html">Inicio</a></li>
+              <li><a href="/html/Services.html">Servicios</a></li>
+              <li><a href="/html/Products.html">Productos</a></li>
+              <li><a href="/html/Impresion3D.html">Impresion 3D</a></li>               
+              <li><a href="/html/Contact.html">Contacto</a></li>               
+            </ul>
+        </nav>
+        <a href="/html/Login.html" class="btn"><button>Ingresar</button></a>
+        <div class="container-user">           
+            <div class="content-shopping-cart">
+              
+        </div>
+    </header>
+
+
+           
+            <div class="container">
+                <h1 class="heading-1">Detalle de la Compra</h1>
+                <ul id="cart-items-buy">
+                    <!-- Los elementos del carrito se agregarán aquí dinámicamente -->
+                    <button class="btn-comprar" onclick="realizarCompra()">Comprar</button>
+
+                </ul>
+            </div>
+        
+  
+
+    <footer class="footer">
+      
+  
+        <div class="container container-footer">
+          <div class="menu-footer">
+            <div class="contact-info">
+              <p class="title-footer">Informacion de contacto</p>
+              <ul>
+                  <li>Whatshapp: +596 78945645</li>
+                  <li>Email: Rocket.3D@gmail.com</li>            
+              </ul>
+              <div class="social-icons">
+                  <span>
+                    <span class="facebook"><i class="fa-brands fa-facebook-f"></i></span>
+                    <span class="instagram"><i class="fa-brands fa-instagram"></i></span>
+                    <span class="tiktok"><i class="fa-brands fa-tiktok"></i></span>              
+                  </span>  
+              </div>
+            </div>
+    
+            <div class="information">
+                <p class="title-footer">Información</p>
+                <ul>
+                  <li><a href="#">Acerca de Nosotros</a></li>
+                  <li><a href="#">Politícas de privacidad</a></li>
+                  <li><a href="#">Términos y Condiciones</a></li>
+                  <li><a href="#">Contactános</a></li>
+                </ul>
+            </div>
+    
+            <div class="my-account">
+              <p class="title-footer">Mi Cuenta</p>
+    
+              <ul>
+                <li><a href="#">Mi Cuenta</a></li>
+                <li><a href="#">Historial de pedido</a></li>
+                <li><a href="#">Lista de Deseos</a></li>
+                <li><a href="#">Reembolso</a></li>
+              </ul>
+            </div>
+    
+            <div class="newsletter">
+              <p class="title-footer">Boletín Informativo</p>
+    
+              <div class="content">
+                  <p>
+                    Suscribete a nuestros boletines ahora y mantente al dia 
+                    con nuevas colecciones y ofertas exclusivas.
+                  </p>
+                  <input type="email" placeholder="Ingresa tu correo aqui...">
+                  <button>Suscríbete</button> 
+              </div>
+            </div>
+          </div>
+    
+          <div class="copyright">
+              <p>
+                Desarrollado por Cristobal Ruiz para el mundo &copy; 2023
+              </p>
+              <img src="/img/Payment_Options.png" alt="Payment_Options">
+          </div>
+    
+        </div>
+      </footer>
+      <script src="https://kit.fontawesome.com/ec58002104.js" crossorigin="anonymous"></script>
+
+
+   <!-- ... (código anterior) ... -->
+
+   <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const cartItemsContainer = document.getElementById('cart-items-buy');
+
+        // Recupera los datos del carrito del localStorage
+        const cartData = JSON.parse(localStorage.getItem('cartForBuyPage')) || [];
+
+        // Muestra los elementos del carrito
+        cartData.forEach(item => {
+            const listItem = document.createElement('li');
+            listItem.className = 'cart-item';
+            listItem.innerHTML = `
+                <img src="/img/${item.name}.jpg" alt="${item.name}">
+                <span>${item.name} x ${item.quantity}</span>
+                <span>$${(item.price * item.quantity).toFixed(3)}</span>
+            `;
+            cartItemsContainer.appendChild(listItem);
+        });
+
+        // Calcula el total de la compra
+        const total = cartData.reduce((acc, item) => acc + item.price * item.quantity, 0);
+
+        // Muestra el total de la compra
+        const totalElement = document.createElement('p');
+        totalElement.className = 'total';
+        totalElement.innerHTML = `Total: $${total.toFixed(3)}
+            <button class="btn-comprar" onclick="realizarCompra()">Comprar</button>
+        `;
+        cartItemsContainer.appendChild(totalElement);
+
+        // Limpia el carrito después de mostrar los elementos
+        localStorage.removeItem('cartForBuyPage');
+    });
+    async function realizarCompra() {
+        try {
+            // Obtener datos del carrito
+            const cartData = JSON.parse(localStorage.getItem('cartForBuyPage')) || [];
+    
+            // Crear estructura de datos para la solicitud a la API
+            const compraRequest = {
+                detalles: cartData.map(item => ({
+                    ped_id: item.ped_id,
+                    pro_id: item.pro_id,
+                    nombre_producto: item.name,
+                    cantidad: item.quantity,
+                    precio_unitario: item.price
+                }))
+            };
+    
+            // Realizar la petición POST a la API
+            const response = await fetch('http://127.0.0.1:8000/realizar_compra/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(compraRequest)
+            });
+    
+            if (response.ok) {
+                alert('Compra realizada exitosamente');
+                // Puedes redirigir al usuario a otra página o realizar otras acciones necesarias
+            } else {
+                alert('Error al realizar la compra');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Error al realizar la compra');
+        }
+    }
+    
+
+    // Función para calcular el total (puedes implementar esto según tu lógica)
+    function calcularTotal() {
+        // Implementa la lógica para calcular el total
+        // Puedes recorrer el carrito y sumar los precios de cada producto
+        // y aplicar descuentos, impuestos, etc.
+        // Por ahora, simplemente sumaremos los precios unitarios
+        const cartData = JSON.parse(localStorage.getItem('cartForBuyPage')) || [];
+        return cartData.reduce((total, item) => total + item.price * item.quantity, 0);
+    }
+</script>
+
+
+
+    
+    
+    
+    
+    
+</body>
+</html>

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/CSS/Products.css">
+    <title>Productos</title>
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo">
+            <img src="/img/Rocket.png" alt="Rocket3D">
+        </div>
+        <nav>
+            <ul class="nav-links">
+              <li><a href="/index.html">Inicio</a></li>
+              <li><a href="/html/Services.html">Servicios</a></li>
+              <li><a href="#">Productos</a></li>
+              <li><a href="/html/Impresion3D.html">Impresion 3D</a></li>               
+              <li><a href="/html/Contact.html">Contacto</a></li>               
+            </ul>
+        </nav>
+        <a href="/html/Login.html" class="btn"><button>Ingresar</button></a>
+        <div class="container-user">           
+            <div class="content-shopping-cart">
+              
+        </div>
+    </header>
+
+    <div class="banner" >
+        <h2>Productos </h2>
+        <form action="#" method="get" class="search-form">
+            <div class="search-container">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="Buscar Productos" id="buscar" name="buscar" class="search-input">
+            </div>
+        </form>
+
+    <div class="container">
+       <table>
+
+       </table>
+    </div>
+
+    <section class="container top-categories">
+        <h1 class="heading-1">Nuestros Productos</h1>
+        <div class="product-cards">
+       
+    
+           
+        </div>
+    </section>    
+
+
+
+    <div class="cart">
+      <h3>Carrito de Compras</h3>
+      <ul id="cart-items">
+          <!-- Los elementos del carrito se agregarán aquí dinámicamente -->
+      </ul>
+      <p>Total: $<span id="cart-total">0</span></p>
+      <button id="clear-cart">Vaciar Carrito</button>
+      <button id="comprar">Comprar</button>
+
+  </div>
+
+
+
+
+
+
+
+    <footer class="footer">
+      
+  
+        <div class="container container-footer">
+          <div class="menu-footer">
+            <div class="contact-info">
+              <p class="title-footer">Informacion de contacto</p>
+              <ul>
+                  <li>Whatshapp: +596 78945645</li>
+                  <li>Email: Rocket.3D@gmail.com</li>            
+              </ul>
+              <div class="social-icons">
+                  <span>
+                    <span class="facebook"><i class="fa-brands fa-facebook-f"></i></span>
+                    <span class="instagram"><i class="fa-brands fa-instagram"></i></span>
+                    <span class="tiktok"><i class="fa-brands fa-tiktok"></i></span>              
+                  </span>  
+              </div>
+            </div>
+    
+            <div class="information">
+                <p class="title-footer">Información</p>
+                <ul>
+                  <li><a href="#">Acerca de Nosotros</a></li>
+                  <li><a href="#">Politícas de privacidad</a></li>
+                  <li><a href="#">Términos y Condiciones</a></li>
+                  <li><a href="#">Contactános</a></li>
+                </ul>
+            </div>
+    
+            <div class="my-account">
+              <p class="title-footer">Mi Cuenta</p>
+    
+              <ul>
+                <li><a href="#">Mi Cuenta</a></li>
+                <li><a href="#">Historial de pedido</a></li>
+                <li><a href="#">Lista de Deseos</a></li>
+                <li><a href="#">Reembolso</a></li>
+              </ul>
+            </div>
+    
+            <div class="newsletter">
+              <p class="title-footer">Boletín Informativo</p>
+    
+              <div class="content">
+                  <p>
+                    Suscribete a nuestros boletines ahora y mantente al dia 
+                    con nuevas colecciones y ofertas exclusivas.
+                  </p>
+                  <input type="email" placeholder="Ingresa tu correo aqui...">
+                  <button>Suscríbete</button> 
+              </div>
+            </div>
+          </div>
+    
+          <div class="copyright">
+              <p>
+                Desarrollado por Cristobal Ruiz para el mundo &copy; 2023
+              </p>
+              <img src="/img/Payment_Options.png" alt="Payment_Options">
+          </div>
+    
+        </div>
+      </footer>
+      <script src="https://kit.fontawesome.com/ec58002104.js" crossorigin="anonymous"></script>
+
+
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          const productosContainer = document.querySelector('.container .product-cards');
+          const cartItemsContainer = document.getElementById('cart-items');
+          const cartTotalElement = document.getElementById('cart-total');
+          const clearCartButton = document.getElementById('clear-cart');
+         
+          
+          
+          let cart = [];  // Agrega esta línea para declarar la variable cart
+      
+          fetch('http://127.0.0.1:8000/products/catalog')
+              .then(response => response.json())
+              .then(data => {
+                  console.log('Respuesta de la API (productos):', data);
+  
+                  data.forEach(producto => {
+                      const productCard = document.createElement('div');
+                      productCard.classList.add('product-card');
+  
+                      productCard.innerHTML = `
+                          <a href="/html/Description.html?id=${producto.id}">
+                              <img src="/img/${producto.nombre}.jpg" alt="${producto.nombre}">
+                          </a>
+                          <h3>${producto.nombre}</h3>
+                          <p>$${producto.precio.toFixed(3)}</p>
+                          <button class="add-to-cart">Agregar al Carrito</button>
+                      `;
+  
+                      productosContainer.appendChild(productCard);
+
+
+                      
+                  });
+              })
+              .catch(error => {
+                  console.error('Error al obtener productos:', error);
+              });
+
+              
+              
+               // Agrega un evento al botón "Agregar al Carrito"
+               productosContainer.addEventListener('click', function (event) {
+                if (event.target.classList.contains('add-to-cart')) {
+                    const productCard = event.target.closest('.product-card');
+                    const productName = productCard.querySelector('h3').innerText;
+                    const productPrice = parseFloat(productCard.querySelector('p').innerText.slice(1));
+        
+                    // Verifica si el producto ya está en el carrito
+                    const existingItem = cart.find(item => item.name === productName);
+        
+                    if (existingItem) {
+                        // Si el producto ya está en el carrito, incrementa la cantidad
+                        existingItem.quantity++;
+                    } else {
+                        // Si el producto no está en el carrito, agrégalo al carrito
+                        cart.push({
+                            name: productName,
+                            price: productPrice,
+                            quantity: 1
+                        });
+                    }
+        
+                    // Actualiza el contenido del carrito
+                    updateCart();
+                }
+            });
+             // Agrega un evento al botón "Vaciar Carrito"
+          clearCartButton.addEventListener('click', function () {
+            // Vacía el carrito y actualiza la visualización
+            cart = [];
+            updateCart();
+          });
+
+          const buyButton = document.getElementById('comprar');
+          buyButton.addEventListener('click', function () {
+              // Redirige a la página "Buy.html"
+              window.location.href = '/html/Buy.html'; // Ajusta la ruta según tu estructura de archivos
+          });
+          
+          
+
+          function updateCart() {
+            cartItemsContainer.innerHTML = '';
+            let total = 0;
+        
+            cart.forEach(item => {
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `
+                    <div>
+                        <img src="/img/${item.name}.jpg" alt="${item.name}">
+                        <span>${item.name} x ${item.quantity}</span>
+                        <span>$${(item.price * item.quantity).toFixed(3)}</span>
+                    </div>
+                `;
+                cartItemsContainer.appendChild(listItem);
+        
+                total += item.price * item.quantity;
+        
+                // Imprime la ruta de la imagen en la consola
+                console.log(`Ruta de la imagen para ${item.name}: /img/${item.name}.jpg`);
+            });
+        
+            // Actualiza el total del carrito
+            cartTotalElement.innerText = total.toFixed(3);
+        
+            // Guarda el carrito en el localStorage
+            localStorage.setItem('cartForBuyPage', JSON.stringify(cart));
+        }
+        
+        
+        
+        
+
+
+
+            // Agrega un evento al formulario de búsqueda
+            const searchForm = document.querySelector('form');
+            searchForm.addEventListener('submit', function (event) {
+                event.preventDefault();
+    
+                // Obtiene el valor del campo de búsqueda
+                const searchTerm = document.getElementById('buscar').value;
+    
+                // Realiza la solicitud GET a la API para buscar productos
+                fetch(`http://127.0.0.1:8000/products/search?query=${searchTerm}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Respuesta de la API (productos filtrados):', data);
+    
+                        // Elimina los productos existentes en el contenedor
+                        productosContainer.innerHTML = '';
+    
+                        // Itera sobre los productos filtrados y crea las tarjetas correspondientes
+                        data.forEach(producto => {
+                            const productCard = document.createElement('div');
+                            productCard.classList.add('product-card');
+    
+                            productCard.innerHTML = `
+                                <img src="/img/${producto.nombre}.jpg" alt="${producto.nombre}">
+                                <h3>${producto.nombre}</h3>
+                                <p>$${producto.precio.toFixed(3)}</p>
+                                <button class="add-to-cart">Agregar al Carrito</button>
+                            `;
+    
+                            productosContainer.appendChild(productCard);
+                        });
+                    })
+                    .catch(error => {
+                        console.error('Error al obtener productos filtrados:', error);
+                    });
+            });
+        });
+    </script>
+    
+    
+    
+    
+</body>
+</html>
