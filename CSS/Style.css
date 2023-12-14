@@ -71,6 +71,18 @@ body{
     transform: scale(1.1);
 }
 
+/* PERFIL USUARIO */
+#profileIcon {
+    cursor: pointer;
+}
+
+#loginMessage {
+    display: none;
+    color: red;
+}
+
+
+
 .container-user{
     display: flex;
     gap: 1rem;

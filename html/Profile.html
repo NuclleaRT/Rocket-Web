@@ -43,6 +43,20 @@
         </div>
     </div>
     <script src="https://kit.fontawesome.com/ec58002104.js" crossorigin="anonymous"></script>
-
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Establecer el indicador de inicio de sesión en localStorage
+            localStorage.setItem('usuarioIniciadoSesion', 'true');
+        });
+    
+        function cerrarSesion() {
+            // Eliminar el indicador de inicio de sesión de localStorage
+            localStorage.removeItem('usuarioIniciadoSesion');
+    
+            // Redirigir al usuario a la página de inicio
+            window.location.replace('/index.html');
+        }
+    </script>
+    
 </body>
 </html>

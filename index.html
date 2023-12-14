@@ -20,13 +20,13 @@
                 <li><a href="/html/Contact.html">Contacto</a></li>               
             </ul>
         </nav>
-        <a href="/html/Login.html" class="btn"><button>Ingresar</button></a>
+        <a href="/html/Login.html" class="btn"><button>Iniciar Sesion</button></a>
         <div class="container-user">           
-            <i class="fa-solid fa-cart-shopping"></i>
-            <div class="content-shopping-cart">
-                <span class="text">Carrito</span>
-                <span class="number">(0)</span>
-            </div>
+            <a id="profileIcon" href="#" onclick="redirectToProfile()">
+                <i class="fas fa-solid fa-user"></i>
+            </a>
+            
+            <div id="loginMessage">Por favor, inicia sesión para acceder al perfil.</div>
 
         </div>
 
@@ -170,6 +170,48 @@
 
     </div>
   </footer>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Verificar si el usuario ha iniciado sesión
+        const usuarioIniciadoSesion = localStorage.getItem('usuarioIniciadoSesion');
+    
+        if (usuarioIniciadoSesion === '1') {
+            // El usuario ha iniciado sesión, permitir acceso a Profile.html
+            const profileIcon = document.getElementById('profileIcon');
+
+            // Verificar si ya se ha agregado el event listener para evitar bucles de redirección
+            if (!profileIcon.hasAttribute('data-listener-added')) {
+                profileIcon.addEventListener('click', redirectToProfile);
+                profileIcon.setAttribute('data-listener-added', 'true');
+            }
+            // También puedes mostrar un mensaje de bienvenida u otros elementos específicos para usuarios autenticados
+        } else {
+            // El usuario no ha iniciado sesión, redirigir a la página de inicio
+            if (!window.location.pathname.includes('/index.html')) {
+                window.location.href = '/index.html';
+            }
+        }
+    });
+    
+    function redirectToProfile() {
+        // Verifica nuevamente si el usuario ha iniciado sesión antes de redirigir
+        const usuarioIniciadoSesion = localStorage.getItem('usuarioIniciadoSesion');
+
+        if (usuarioIniciadoSesion === '1') {
+            // El usuario ha iniciado sesión, redirigir a la página de perfil
+            window.location.href = '/html/Profile.html';
+        } else {
+            // El usuario no ha iniciado sesión, mostrar un mensaje o realizar alguna acción
+            console.log('Por favor, inicia sesión para acceder al perfil.');
+        }
+    }
+</script>
+
+
+
+
+
+
   <script src="https://kit.fontawesome.com/ec58002104.js" crossorigin="anonymous"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
